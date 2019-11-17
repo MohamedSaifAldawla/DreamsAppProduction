@@ -1,0 +1,110 @@
+<ion-header no-border>
+    <ion-navbar hideBackButton>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <ion-grid>
+
+    <ion-row>
+      <ion-col col-12>
+        <img src="assets/Myimg/user.png" class="user">
+        <!-- <h1>{{responseData.name}}</h1> -->
+        <hr style="height: 2.55px;">
+      </ion-col>
+    </ion-row>
+
+    <div class="item">
+      <h3>{{'Statistics' | translate}}</h3>
+      <ion-row>
+        <ion-col col-6>
+          <div class="stats">
+            <ion-row>
+              <ion-col col-12>
+                <ion-badge color="secondary">{{stats.days}}</ion-badge>
+              </ion-col>
+            </ion-row>
+            <img src="assets/Myimg/Alarm.png">
+            <p>{{'24' | translate}}</p>
+          </div>
+        </ion-col>
+
+        <ion-col col-6>
+          <div class="stats">
+            <ion-row>
+              <ion-col col-12>
+                <ion-badge color="secondary">{{stats.months}}</ion-badge>
+              </ion-col>
+            </ion-row>
+            <img src="assets/Myimg/Calendar.png">
+            <p>{{'Month' | translate}}</p>
+          </div>
+        </ion-col>
+
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-6>
+          <div class="stats">
+            <ion-row>
+              <ion-col col-12>
+                <ion-badge color="secondary">{{stats.solved}}</ion-badge>
+              </ion-col>
+            </ion-row>
+            <img src="assets/Myimg/Checked.png">
+            <p>{{'Solved' | translate}}</p>
+          </div>
+        </ion-col>
+
+        <ion-col col-6>
+          <div class="stats">
+            <ion-row>
+              <ion-col col-12>
+                <ion-badge color="danger">{{stats.pending}}</ion-badge>
+              </ion-col>
+            </ion-row>
+            <img src="assets/Myimg/Timer.png">
+            <p>{{'Pending' | translate}}</p>
+          </div>
+        </ion-col>
+
+      </ion-row>
+    </div>
+
+    <ion-row>
+      <ion-col col-12>
+        <div style="margin-top: 20px;" class="meter">
+          <ion-row>
+            <ion-col col-6>
+              <p>{{'Speed' | translate}}</p>
+            </ion-col>
+            <ion-col col-6>
+                <p style="text-align: right;">78%</p>
+              </ion-col>
+          </ion-row>
+          <progress value="80" max="100"></progress>
+        </div>
+      </ion-col>
+    </ion-row>
+
+
+    <ion-row>
+        <ion-col col-12>
+          <div class="meter">
+            <ion-row>
+              <ion-col col-6>
+                <p>{{'Interpreting' | translate}}</p>
+              </ion-col>
+              <ion-col col-6>
+                  <p style="text-align: right;">50%</p>
+                </ion-col>
+            </ion-row>
+            <progress value="50" max="100"></progress>
+          </div>
+        </ion-col>
+      </ion-row>
+
+  </ion-grid>
+
+</ion-content>

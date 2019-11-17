@@ -1,0 +1,140 @@
+<ion-header no-border>
+    <ion-navbar>
+        <ion-buttons left>
+           </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+          <div>
+            <img src="assets/Myimg/user.png" alt="Logo">
+          </div>
+          <ion-grid>
+            <ion-row>
+                <ion-col col-10>
+                    <div>
+                        <!-- <h1>User Account</h1> -->
+                        <h1>{{responseData.name}}</h1>
+                      </div>
+                  </ion-col>
+              <ion-col col-2 style="text-align: right;">
+                <div>
+                <button ion-button icon-end color="dream" round class="edit" *ngIf="responseData.user_type==3" (click)="inputs()">
+                  <ion-icon name="custom-Pen"></ion-icon>
+                  </button>
+              </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+
+            <div>
+             <i class="fas fa-user"></i>
+              <input type="text" name="" value="{{responseData.name}}" [(ngModel)]="userData.name"   placeholder="{{'name' | translate}}" >
+            </div>
+
+            <div>
+              <i class="fas fa-user-tag"></i>
+              <input type="text" name="" value="{{responseData.username}}" placeholder="{{'username' | translate}}" disabled>
+            </div>
+            
+            <div>
+              <i class="fas fa-envelope"></i>
+              <input type="text" name="" value="{{responseData.email}}"   placeholder="{{'email' | translate}}" disabled>
+            </div>
+            
+            <div>
+              <i class="fas fa-phone"></i>
+              <input type="text" name="" value="{{responseData.phone}}" [(ngModel)]="userData.phone"  placeholder="{{'phone' | translate}}" >
+            </div>
+
+            <div>
+              <i class="fas fa-calendar-alt"></i>
+              <input class="cal" type="date" name="" value="{{responseData.birth}}" [(ngModel)]="userData.birth"  placeholder="Birthdate" >
+            </div>
+
+            <!-- <div>
+              <i class="fas fa-user"></i>
+              <input type="text" name="" value="{{responseData.martial}}"  placeholder="Martial Status"> 
+            </div>
+
+            <div>
+              <i class="fas fa-user"></i>
+              <input type="text" name="" value="{{responseData.gender}}"  placeholder="Gender" >
+            </div> -->
+
+            <ion-list *ngIf="lang=='en' else Arabic">
+                <ion-item>
+                  <ion-label>{{'Social' | translate}}</ion-label>
+                  <ion-select  [(ngModel)]="userData.martial">
+                    <ion-option value="0">{{'Single' | translate}}</ion-option>
+                    <ion-option value="1">{{'Married' | translate}}</ion-option>
+                    <ion-option value="2">{{'Divorced' | translate}}</ion-option>
+                    <ion-option value="3">{{'Widewoed' | translate}}</ion-option>
+                  </ion-select>
+                </ion-item>
+              </ion-list>
+
+              <ion-list *ngIf="lang=='en' else Arabic1">
+                  <ion-item>
+                    <ion-label>{{'Gender' | translate}}</ion-label>
+                    <ion-select [(ngModel)]="userData.gender">
+                      <ion-option value="0" selected="true">{{'Male' | translate}}</ion-option>
+                      <ion-option value="1">{{'FeMale' | translate}}</ion-option>
+                    </ion-select>
+                  </ion-item>
+                </ion-list>
+
+<ion-grid [hidden]="!isToggled" *ngIf="lang=='en'">
+  <ion-row>
+    <ion-col col-12>
+            <button ion-button icon-end color="dream" round class="sign" *ngIf="responseData.user_type==3" (click)="UserEdite()">
+              Update
+              <ion-icon name="custom-Sent"></ion-icon>
+              </button>
+    </ion-col>
+  </ion-row>
+</ion-grid>
+
+<ion-grid [hidden]="!isToggled" *ngIf="lang=='ar'">
+    <ion-row>
+      <ion-col col-12>
+              <button ion-button icon-end color="dream" round class="sign" *ngIf="responseData.user_type==3" (click)="UserEdite()">
+                تعديل بيانات الحساب
+                <ion-icon name="custom-Sent"></ion-icon>
+                </button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
+  </ion-content>
+
+
+  <!-- ========================Arabic============================= -->
+
+<ng-template #Arabic1>
+    <ion-list dir="rtl">
+        <ion-item>
+          <ion-label>{{'Gender' | translate}}</ion-label>
+          <ion-select [(ngModel)]="userData.gender">
+            <ion-option value="0" selected="true">{{'Male' | translate}}</ion-option>
+            <ion-option value="1">{{'FeMale' | translate}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+</ng-template>
+
+<ng-template #Arabic>
+    <ion-list dir="rtl">
+        <ion-item>
+          <ion-label>{{'Social' | translate}}</ion-label>
+          <ion-select [(ngModel)]="userData.martial">
+            <ion-option value="0">{{'Single' | translate}}</ion-option>
+            <ion-option value="1">{{'Married' | translate}}</ion-option>
+            <ion-option value="2">{{'Divorced' | translate}}</ion-option>
+            <ion-option value="3">{{'Widewoed' | translate}}</ion-option>
+          </ion-select>
+        </ion-item>
+      </ion-list>
+</ng-template>
+  

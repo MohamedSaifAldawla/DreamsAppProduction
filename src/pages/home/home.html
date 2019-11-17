@@ -1,0 +1,105 @@
+<ion-header no-border>
+    <ion-navbar hideBackButton>
+    </ion-navbar>
+</ion-header>
+<ion-content padding>
+    <ion-refresher (ionRefresh)="doRefresh($event)">
+        <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
+
+  <h1>{{'Home' | translate}}</h1>
+  <div>
+      <ion-grid>
+          <div class="item">
+            <ion-row>
+              <ion-col col-6 (click)="add()">
+                <div class="stats">
+                    <ion-row style="padding-top: 20px;">
+                        <ion-col col-12>
+                        </ion-col>
+                      </ion-row>
+                  <img src="assets/Myimg/Add.png">
+                  <p>{{'Add' | translate}}</p>
+                </div>
+              </ion-col>
+      
+              <!-- if Not Empty -->
+              <ion-col col-6 (click)="dreams()" *ngIf="visit!=4">
+                <div class="stats">
+                  <ion-row>
+                    <ion-col col-12>
+                      <ion-badge color="danger" *ngIf="userDreams!=0 else Empty">{{userDreams}}</ion-badge>
+                    </ion-col>
+                  </ion-row>
+
+                  <ng-template #Empty>
+                    <!-- if Empty -->
+                    <ion-row style="padding: 5px">
+                      <ion-col col-12>
+                        <ion-badge color="danger" *ngIf="userDreams==0"></ion-badge>
+                      </ion-col>
+                    </ion-row>
+                  </ng-template>
+
+                  <img src="assets/Myimg/Dreams.png">
+                  <p>{{'Dreams' | translate}}</p>
+                </div>
+              </ion-col>
+
+              <ion-col col-6 (click)="dreams()" *ngIf="visit==4">
+                <div class="stats" style="padding: 20px">
+                  <ion-row>
+                    <ion-col col-12>
+                      <ion-badge color="danger"></ion-badge>
+                    </ion-col>
+                  </ion-row>
+                  <img src="assets/Myimg/Dreams.png">
+                  <p>{{'Dreams' | translate}}</p>
+                </div>
+              </ion-col>
+      
+            </ion-row>
+      
+            <ion-row style="margin-top: 20px;">
+              <!-- if Not Empty -->
+              <ion-col col-6 (click)="articles()">
+                <div class="stats">
+                  <ion-row>
+                    <ion-col col-12>
+                      <ion-badge color="secondary"  *ngIf="Articles!=0 else Empty2">{{Articles}}</ion-badge>
+                    </ion-col>
+                  </ion-row>
+
+                  <ng-template #Empty2>
+                    <!-- if Empty -->
+                    <ion-row style="padding: 5px">
+                      <ion-col col-12>
+                        <ion-badge color="secondary" *ngIf="Articles==0"></ion-badge>
+                      </ion-col>
+                    </ion-row>
+                  </ng-template>
+                  <img src="assets/Myimg/Articles.png">
+                  <p>{{'Articles' | translate}}</p>
+                </div>
+              </ion-col>
+      
+              <ion-col col-6 (click)="help()">
+                <div class="stats">
+                    <ion-row style="padding-top: 20px;">
+                        <ion-col col-12>
+                        </ion-col>
+                      </ion-row>
+                  <img src="assets/Myimg/Help.png">
+                  <p>{{'Help' | translate}}</p>
+                </div>
+              </ion-col>
+      
+            </ion-row>
+          </div>
+        </ion-grid>
+  </div>
+
+
+ 
+
+</ion-content>

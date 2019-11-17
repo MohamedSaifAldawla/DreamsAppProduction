@@ -1,0 +1,119 @@
+page-interpretor-profile {
+    ion-content{
+        background-image:url("../assets/Myimg/back.png");
+        background-size: cover;
+        text-align: center;
+      }
+
+      img.user{
+        margin-top: 6px;
+        max-width: 100%;
+      }
+  
+    h1{
+      color: #20BED7;
+      margin-bottom: 26px;
+      font-weight: bold;
+      font-family: bein;
+    }
+h3{ font-family: bein;}
+    
+
+  .item{
+    margin-top: 30px;
+    padding-bottom: 30px;
+  }
+
+    .stats{
+      background-color: white;
+      padding: 10px;
+      //width: 140px;
+      border-radius: 4px;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    .stats img {
+      width: 52px;
+      height: 52px;
+  }
+
+  .stats p {
+    font-size: 12px;
+    font-weight: 900;
+    color: #555555e8;
+    font-family: bein;
+}
+
+    ion-badge {
+      float: right;
+    }
+
+
+    .progress {
+      height: 10px;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      overflow: hidden;
+      background-color: #fff;
+      border-radius: 4px;
+      -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+      box-shadow: inset 0 1px 2px rgba(0,0,0,.1);
+      
+  }
+
+  .progress-bar-info {
+    background-color: #20BED7;
+}
+
+
+  .label {
+    display: inline;
+    padding: .2em .6em .3em;
+    font-size: 90%;
+    font-weight: 700;
+    line-height: 1;
+    color: #555555d4; 
+    text-align: left;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    font-family: bein;
+  }
+  
+  .meter p {
+    font-size: 12px;
+    font-weight: 900;
+    color: #555555e8;
+    text-align: left;
+    font-family: bein;
+}
+progress[value] {
+  width: 300px;
+  height: 9px;
+  // margin-bottom: 20px;
+ /* Reset the default appearance */
+ -webkit-appearance: none;
+ appearance: none;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 4px;
+  // box-shadow: 0px 5px 5px rgba(0, 0, 0, 0.2);
+}
+
+progress[value]::-webkit-progress-value {
+  background-image:
+	   -webkit-linear-gradient(-45deg, 
+	                           transparent 33%, rgba(0, 0, 0, .1) 33%, 
+	                           rgba(0,0, 0, .1) 66%, transparent 66%),
+	   -webkit-linear-gradient(top, 
+	                           rgba(255, 255, 255, .25), 
+	                           rgba(0, 0, 0, .25)),
+	   -webkit-linear-gradient(left, #20BED7, #20BED7);
+
+    border-radius: 4px; 
+    background-size: 35px 20px, 100% 100%, 100% 100%;
+}
+
+}

@@ -1,0 +1,134 @@
+<ion-header no-border>
+    <ion-navbar>
+        <ion-buttons left>
+           </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h1>{{'Dreams' | translate}}</h1>
+
+    <div padding *ngIf="lang=='en' else Arabic">
+      <ion-segment>
+        <ion-segment-button value="All" (click)="GetAll()">
+            {{'All' | translate}}
+        </ion-segment-button>
+        <ion-segment-button value="Pending" (click)="GetPending()">
+            {{'Pending' | translate}}
+        </ion-segment-button>
+  
+        <ion-segment-button value="Solved" (click)="GetSolved()">
+            {{'Solved' | translate}} 
+        </ion-segment-button>
+      </ion-segment>
+    </div>
+
+    <ng-template #Arabic>
+        <div padding dir="rtl">
+            <ion-segment>
+              <ion-segment-button value="All" (click)="GetAll()">
+                  {{'All' | translate}}
+              </ion-segment-button>
+              <ion-segment-button value="Pending" (click)="GetPending()">
+                  {{'Pending' | translate}}
+              </ion-segment-button>
+        
+              <ion-segment-button value="Solved" (click)="GetSolved()">
+                  {{'Solved' | translate}} 
+              </ion-segment-button>
+            </ion-segment>
+          </div>
+    </ng-template>
+
+  <div class="card" *ngFor="let item of responseData">
+
+    <ion-grid *ngIf="item.dream_state==2" (click)="info(item.id)">
+        <ion-row>
+
+            <ion-col col-12 style="text-align: right;">
+              <i class="fas fa-circle solved"></i>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4><img src="assets/Myimg/Dreams.png" alt="Logo"></ion-col>
+            <ion-col col-4>
+              <h2>{{item.id}}</h2>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <hr>
+            </ion-col>
+          </ion-row>
+          <ion-row class="details">
+              <ion-col col-3>
+                  <h1 *ngIf="item.lang==1; else Arabic">{{'English' | translate}}</h1>
+                  <ng-template #Arabic>
+                    <h1>{{'Arabic' | translate}}</h1>
+                  </ng-template>
+                </ion-col>
+                <ion-col col-3>
+                  <h1 *ngIf="item.dream_type==1; else Letters">{{item.body.length}} {{'Letters' | translate}}</h1>
+                  <ng-template #Letters>
+                    <h1>{{'No-txt' | translate}}</h1>
+                  </ng-template>
+                </ion-col>
+                <ion-col col-3>
+                  <h1 *ngIf="item.dream_type==0; else voice">{{'Voice' | translate}}</h1>
+                  <ng-template #voice>
+                    <h1>{{'No-voice' | translate}}</h1>
+                  </ng-template>
+                </ion-col>
+            <ion-col col-3>
+              <h1>{{item.created_at}}</h1>
+            </ion-col>
+          </ion-row>
+    </ion-grid>
+
+
+
+    <ion-grid *ngIf="item.dream_state==1" (click)="info(item.id)">
+        <ion-row>
+            <ion-col col-12 style="text-align: right;">
+              <i class="fas fa-circle pending"></i>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-4><img src="assets/Myimg/Dreams.png" alt="Logo"></ion-col>
+            <ion-col col-4>
+              <h2>{{item.id}}</h2>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col col-12>
+              <hr>
+            </ion-col>
+          </ion-row>
+          <ion-row class="details">
+    
+              <ion-col col-3>
+                  <h1 *ngIf="item.lang==1; else Arabic">{{'English' | translate}}</h1>
+                  <ng-template #Arabic>
+                    <h1>{{'Arabic' | translate}}</h1>
+                  </ng-template>
+                </ion-col>
+                <ion-col col-3>
+                  <h1 *ngIf="item.dream_type==1; else Letters">{{item.body.length}} {{'Letters' | translate}}</h1>
+                  <ng-template #Letters>
+                    <h1>{{'No-txt' | translate}}</h1>
+                  </ng-template>
+                </ion-col>
+                <ion-col col-3>
+                  <h1 *ngIf="item.dream_type==0; else voice">{{'Voice' | translate}}</h1>
+                  <ng-template #voice>
+                    <h1>{{'No-voice' | translate}}</h1>
+                  </ng-template>
+                </ion-col>
+            <ion-col col-3>
+              <h1>{{item.created_at}}</h1>
+            </ion-col>
+          </ion-row>
+    </ion-grid>
+
+  </div>
+</ion-content>

@@ -1,0 +1,28 @@
+<ion-header no-border>
+    <ion-navbar>
+        <ion-buttons left>
+           </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+<ion-content padding>
+  <img src="assets/Myimg/Phone_100px.png" alt="Logo">
+  <h1>{{'Contact' | translate}}</h1>
+
+  <div>
+  <i class="fas fa-envelope"></i>
+  <input type="text" name="" [(ngModel)]="contactData.email" value="" placeholder="{{'email' | translate}}">
+  </div>
+
+  <!-- <div>
+  <i class="fas fa-phone"></i>
+  <input type="text" name="" value="" placeholder="{{'phone' | translate}}" >
+  </div> -->
+
+  <div>
+    <input class="subject" type="text" name="" [(ngModel)]="contactData.body" value="" placeholder="{{'txt' | translate}}" >
+    </div>
+
+  <button ion-button round color="dream" class="sign" (click)="send()">{{'Sendtxt' | translate}}</button>
+
+</ion-content>

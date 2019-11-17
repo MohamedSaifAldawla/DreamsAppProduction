@@ -1,0 +1,384 @@
+// http://ionicframework.com/docs/theming/
+
+
+// App Global Sass
+// --------------------------------------------------
+// Put style rules here that you want to apply globally. These
+// styles are for the entire app and not just one component.
+// Additionally, this file can be also used as an entry point
+// to import other Sass files to be included in the output CSS.
+//
+// Shared Sass variables, which can be used to adjust Ionic's
+// default Sass variables, belong in "theme/variables.scss".
+//
+// To declare rules for a specific mode, create a child rule
+// for the .md, .ios, or .wp mode classes. The mode class is
+// automatically applied to the <body> element in the app.
+@import "../assets/scss/fontawesome.scss";
+@import "../assets/scss/solid.scss";
+@import "../assets/scss/brands.scss";
+@font-face {
+    font-family: Calibri;
+    src: url("../assets/fonts/Calibri.ttf");
+}
+@font-face {
+    font-family: bein;
+    src: url("../assets/fonts/bein.ttf");
+}
+
+.tabs-ios .tab-button[aria-selected="true"] .tab-button-icon {
+    color:#20BED7;
+}
+
+.tabs-ios .tab-button:hover:not(.disable-hover), .tabs-ios .tab-button[aria-selected="true"] {
+    color: #20BED7;
+}
+
+.tabs-md .tab-button[aria-selected=true] .tab-button-icon {
+    color: #20BED7;
+}
+
+.tabs-md .tab-button[aria-selected=true] {
+    color: #20BED7;
+
+}
+
+// toolbar-background -> for the navbar background
+// toolbar-title -> for the navbar title
+// bar-button -> for the menu buttons
+
+.toolbar-background{
+    background: transparent;
+}
+
+.tabs-ios .tabbar {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border-top: 0.3px solid rgba(0, 0, 0, 0.3);
+    background: #fff;
+}
+
+.tabs-md .tabbar {
+    -webkit-box-pack: center;
+    -webkit-justify-content: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    border-top: 0.3px solid rgba(0, 0, 0, 0.3);
+    background: #fff;
+}
+
+/*custom Ionicon icon*/
+ion-icon {
+    &[class*="custom-"] {
+      mask-size: contain;
+      mask-position: 50% 50%;
+      mask-repeat: no-repeat;
+      background: currentColor;
+      width: 1em;
+      height: 1em;
+    }
+    &[class*="custom-mynewicon"] {
+      mask-image: url(../assets/Myimg/Moon.png);
+    }
+}
+
+ion-icon {
+    &[class*="custom-"] {
+      mask-size: contain;
+      mask-position: 50% 50%;
+      mask-repeat: no-repeat;
+      background: currentColor;
+      width: 1em;
+      height: 1em;
+    }
+    &[class*="custom-Pen"] {
+      mask-image: url(../assets/Myimg/Pen.svg);
+    }
+}
+
+ion-icon {
+    &[class*="custom-"] {
+      mask-size: contain;
+      mask-position: 50% 50%;
+      mask-repeat: no-repeat;
+      background: currentColor;
+      width: 1em;
+      height: 1em;
+    }
+    &[class*="custom-Sent"] {
+      mask-image: url(../assets/Myimg/Sent.svg);
+    }
+}
+
+ion-icon {
+    &[class*="custom-"] {
+      mask-size: contain;
+      mask-position: 50% 50%;
+      mask-repeat: no-repeat;
+      background: currentColor;
+      width: 1em;
+      height: 1em;
+    //   margin-right: -100px;
+    //   margin-left: 80px;
+    }
+    &[class*="custom-login"] {
+      mask-image: url(../assets/Myimg/login.svg);
+    }
+}
+
+ion-icon {
+    &[class*="custom-"] {
+      mask-size: contain;
+      mask-position: 50% 50%;
+      mask-repeat: no-repeat;
+      background: currentColor;
+      width: 1em;
+      height: 1em;
+    }
+    &[class*="custom-loginar"] {
+      mask-image: url(../assets/Myimg/loginar.svg);
+    }
+}
+
+ion-icon {
+    &[class*="custom-"] {
+      mask-size: contain;
+      mask-position: 50% 50%;
+      mask-repeat: no-repeat;
+      background: currentColor;
+      width: 1em;
+      height: 1em;
+    //   margin-right: -100px;
+    //   margin-left: 80px;
+    }
+    &[class*="custom-go"] {
+      mask-image: url(../assets/Myimg/CircledRight.svg);
+    }
+}
+
+ion-icon {
+    &[class*="custom-"] {
+      mask-size: contain;
+      mask-position: 50% 50%;
+      mask-repeat: no-repeat;
+      background: currentColor;
+      width: 1em;
+      height: 1em;
+      font-weight: normal;
+    //   margin-right: -100px;
+    //   margin-left: 80px;
+    }
+    &[class*="custom-Logout"] {
+      mask-image: url(../assets/Myimg/Logout.svg);
+    }
+}
+
+ion-icon {
+    &[class*="custom-"] {
+      mask-size: contain;
+      mask-position: 50% 50%;
+      mask-repeat: no-repeat;
+      background: currentColor;
+      width: 1em;
+      height: 1em;
+      font-weight: normal;
+    //   margin-right: -100px;
+    //   margin-left: 80px;
+    }
+    &[class*="custom-lang"] {
+      mask-image: url(../assets/Myimg/lang.svg);
+    }
+}
+
+ion-icon {
+    &[class*="custom-"] {
+      mask-size: contain;
+      mask-position: 50% 50%;
+      mask-repeat: no-repeat;
+      background: currentColor;
+      width: 1em;
+      height: 1em;
+      font-weight: normal;
+    //   margin-right: -100px;
+    //   margin-left: 80px;
+    }
+    &[class*="custom-Glasses"] {
+      mask-image: url(../assets/Myimg/Glasses.svg);
+    }
+}
+
+.segment-ios .segment-button {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 0;
+    height: 3.2rem;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #20BED7;
+    font-size: 1.5rem;
+    line-height: 3rem;
+    color: #53575a;
+    background-color: transparent;
+}
+
+.segment-md .segment-button {
+    -webkit-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1;
+    flex: 1;
+    width: 0;
+    height: 4.2rem;
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    border-bottom-color: rgba(0, 0, 0, 0.1);
+    font-size: 1.5rem;
+    font-weight: 500;
+    line-height: 4rem;
+    text-transform: none ;
+    color: #53575a;
+    background-color: transparent;
+    opacity: 0.7;
+    -webkit-transition: 100ms all linear;
+    transition: 100ms all linear;
+    padding: 0 6px;
+}
+
+.segment-md .segment-button.activated, .segment-md .segment-button.segment-activated {
+    border-color: #20BED7;
+    opacity: 1;
+}
+
+ion-toast.success .toast-wrapper {
+	background: #32db64;
+}
+
+ion-toast.error .toast-wrapper {
+	background: rgb(209, 71, 71);
+}
+ion-item{
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.06);
+    border-bottom: 0 !important;
+    border-radius: 10px !important;
+  }
+  
+  .item-md{
+    box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.06);
+    border-bottom: 0 !important;
+    border-radius: 10px !important;
+    // border: 1px solid #20BED7 !important;
+  }
+
+  .alert-md [aria-checked=true] .alert-radio-icon {
+    border-color: #20BED7;
+}
+
+.alert-md .alert-radio-inner {
+    background-color: #20BED7;
+}
+
+  .alert-md [aria-checked=true] .alert-radio-label {
+    color: #20BED7;
+}
+
+.alert-md .alert-button {
+    color: #20BED7;
+}
+
+.alert-ios [aria-checked=true] .alert-radio-label {
+    color: #20BED7;
+}
+
+.alert-ios [aria-checked=true] .alert-radio-inner {
+    border-color: #20BED7;
+}
+
+.alert-ios .alert-button {
+    color: #20BED7;
+}
+
+.badge-ios-danger {
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.badge-ios-secondary {
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.3);
+}
+
+.badge-md-danger {
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.3);
+}
+.badge-md-secondary {
+    box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.3);
+}
+.alert-md .alert-title {
+    font-size: 18px;
+    font-family: bein;
+}
+// .toast-container{
+//     background-color: white;
+//     }
+.alert-ios .alert-title {
+    font-family: bein;
+}
+.tabs-ios .tab-button {
+    font-size: 10px;
+    font-family: bein;
+    font-weight: bold;
+}
+.tabs-md .tab-button-text {
+    font-size: 10px;
+    font-family: bein;
+    font-weight: bold;
+}
+
+.select-text {
+    margin-left: 14px;
+    margin-top: -2px;
+}
+
+.select-md .select-text {
+    margin-left: 14px;
+    margin-top: -12px;
+}
+
+.alert-ios .alert-button,
+.alert-md .alert-button {
+    font-family: bein;
+}
+
+.toast-ios .toast-message,
+.toast-md .toast-message {
+    font-family: bein;
+    text-align: center;
+}
+
+.bar-button-default-ios, .bar-button-default.bar-button-ios-default, 
+.bar-button-clear-ios-default {
+  color: #20BED7;
+  background-color: #fff;
+  border-radius: 28px;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.3);
+  padding: 7px;
+  margin-left: 5px;
+  display: inline-block;
+  height: 0;
+}
+
+.bar-button-default-md, .bar-button-clear-md-default, .bar-button-md-default {
+  color: #20BED7;
+  background-color: #fff;
+  border-radius: 28px;
+  box-shadow: 0px 1px 8px rgba(0, 0, 0, 0.3);
+  padding: 0px;
+  margin-left: 5px;
+  display: none !important;
+}
+
+.bar-button-default-wp, .bar-button-clear-wp-default, .bar-button-wp-default {
+  display: none !important;
+}
+

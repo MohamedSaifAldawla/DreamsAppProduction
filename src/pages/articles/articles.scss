@@ -1,0 +1,51 @@
+page-articles {
+    ion-content{
+        background-image:url("../assets/Myimg/back.png");
+        background-size: cover;
+        text-align: center;
+      }
+      h1{
+        color: #20BED7;
+        margin-top: 10px !important;
+        margin-bottom: 40px;
+        font-weight: bold;
+        font-family: bein;
+      }
+      h3{
+        position:absolute;
+        color: #53575A;
+        margin-top: 70px !important;
+        margin-bottom: 10px;
+        margin-left: 130px;
+        font-weight: bold;
+        font-size: 10px;
+        font-family: bein;
+      }
+
+      hr { 
+        display: block;
+        margin-top: 0.5em;
+        margin-bottom: 0px;
+        margin-left: auto;
+        margin-right: auto;
+        border-width: 1px;
+        background-color: #D2D2D2;
+      } 
+    
+    .details h1{
+      color: #53575A;
+      font-size: 10px;
+      margin-top: 0px !important;
+      margin-bottom: 10px !important;
+      font-family: bein;
+    }
+      .card{
+        border: 1px solid #D2D2D2;
+        border-radius: 10px;
+        box-shadow: 0 0 10px #D2D2D2;
+        margin-bottom: 10px;
+        cursor: pointer;
+    
+      }
+      
+}

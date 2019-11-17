@@ -1,0 +1,278 @@
+<ion-header no-border>
+    <ion-navbar>
+        <ion-buttons left>
+           </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h1>{{'Add' | translate}}</h1>
+  <ion-grid>
+    <ion-row>
+      <ion-col col-3>
+        <ion-label>{{'Letters' | translate}}</ion-label>
+      </ion-col>
+      <ion-col col-3>
+        <input type="text" name="" value="{{responseData.text}}" placeholder="" disabled>
+      </ion-col>
+
+
+      <ion-col col-3>
+        <ion-label>{{'Seconds' | translate}}</ion-label>
+      </ion-col>
+      <ion-col col-3>
+        <input type="text" name="" value="{{responseData.voice}}" placeholder="" disabled>
+      </ion-col>
+
+    </ion-row>
+  </ion-grid>
+
+<!-- <ion-list *ngIf="lang=='en' else Arabic">
+    <ion-item>
+      <ion-label>{{'DreamType' | translate}}</ion-label>
+      <ion-select (ionChange)="notify()" [(ngModel)]="dreamData.dtype" onclick="show();">
+        <ion-option value="1">{{'Text' | translate}}</ion-option>
+        <ion-option value="0">{{'Voice' | translate}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list> -->
+  <ion-label style="font-size: 17px;">{{'DreamType' | translate}}</ion-label>
+  <div padding>
+      <ion-segment (click)="notify()" onclick="show();" [(ngModel)]="dreamData.dtype">
+        <ion-segment-button value="1">
+          <ion-icon name="text" color="light" style="color: #20BED7;margin-right: 27px;margin-left: -40px;"></ion-icon> {{'Text' | translate}}
+        </ion-segment-button>
+        <ion-segment-button value="0">
+          <ion-icon name="mic" color="light" style="color: #20BED7;margin-right: 27px;margin-left: -40px;"></ion-icon>  {{'Voice2' | translate}}
+        </ion-segment-button>
+
+      </ion-segment>
+    </div>
+
+  <div [hidden]="isToggled">
+    <p style="margin-bottom: 0px;">{{count}} / {{responseData.text}}</p>
+    <textarea (input)="txtCount()" class="subject" id="textarea" rows="8" cols="20" maxlength="{{responseData.text}}"
+      type="text" name="" value="" [(ngModel)]="dreamData.body" placeholder="{{'WriteDream' | translate}}">
+    </textarea>
+  </div>
+
+  <div [hidden]="!isToggled">
+    <!-- [hidden]="!isToggled" -->
+    <button style="box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);" ion-button round color="dream" (click)="startRecord()"
+      onclick="start();" *ngIf="!recording">
+      <ion-icon name="mic"></ion-icon>&nbsp;&nbsp;{{'Start' | translate}}
+    </button>
+
+    <div>
+      <button style="box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);" ion-button round color="dream" (click)="StopRecord()"
+        onclick="stop();" *ngIf="recording">
+        <ion-icon name="mic-off"></ion-icon>&nbsp;&nbsp;{{'Stop' | translate}}
+      </button>
+      <div>
+        <!-- Dots -->
+        <ion-spinner name="dots" color="#20BED7" *ngIf="recording"></ion-spinner>
+
+        <body>
+          <div class="time"><span id="time"></span></div>
+          <!-- <input type="button" value="start" onclick="start();">
+            <input type="button" value="stop" onclick="stop();">
+            <input type="button" value="reset" onclick="reset()"> -->
+        </body>
+
+      </div>
+    </div>
+
+    <ion-list>
+      <ion-item class="itemtab" *ngFor="let audio of audioList; index as i;">
+        <p>{{audio.filename}}</p>
+        <p>{{audio.audio}}</p>
+
+        <button style="margin: -25px" ion-button clear item-end large (click)="playAudio(audio.filename, i)">
+          <ion-icon name="play" color="light"></ion-icon>
+        </button>
+
+        <button style="margin: 0px" ion-button clear item-end large (click)="pauseAudio()">
+          <ion-icon name="pause" color="light"></ion-icon>
+        </button>
+
+        <button style="margin: -21px" ion-button clear item-end large (click)="stopAudio()">
+          <ion-icon name="ios-square" color="light"></ion-icon>
+        </button>
+
+        <button style="margin: 0px" ion-button clear item-end large (click)="showConfirm()">
+          <ion-icon name="trash" color="light"></ion-icon>
+        </button>
+
+      </ion-item>
+
+      <!-- <button style="margin: 0px" ion-button clear item-end large (click)="resumeAudio()">
+        <ion-icon name="trash" color="light"></ion-icon>
+      </button> -->
+      
+      <!-- <ion-item class="itemtab">
+          <p>audio.filename</p>
+          <button style="margin: -25px" ion-button clear item-end large>
+            <ion-icon name="play" color="light"></ion-icon>
+          </button>
+          <button style="margin: 0px" ion-button clear item-end large>
+              <ion-icon name="ios-square" color="light"></ion-icon>
+            </button>
+
+            <button style="margin: -21px" ion-button clear item-end large>
+              <ion-icon name="pause" color="light"></ion-icon>
+            </button>
+
+            <button style="margin: 0px" ion-button clear item-end large  (click)="showConfirm()">
+              <ion-icon name="trash" color="light"></ion-icon>
+            </button>
+
+        </ion-item> -->
+
+    </ion-list>
+  </div>
+
+  <ion-list *ngIf="lang=='en' else Arabic1">
+    <ion-item>
+      <ion-label>{{'Gender' | translate}}</ion-label>
+      <ion-select [(ngModel)]="dreamData.gender">
+        <ion-option value="0" selected="true">{{'Male' | translate}}</ion-option>
+        <ion-option value="1">{{'FeMale' | translate}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <!-- <ion-list *ngIf="lang=='en' else Arabic2">
+    <ion-item>
+      <ion-label>{{'Language' | translate}}</ion-label>
+      <ion-select [(ngModel)]="dreamData.language">
+        <ion-option value="0">{{'Arabic' | translate}}</ion-option>
+        <ion-option value="1">{{'English' | translate}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list> -->
+
+  <ion-list *ngIf="lang=='en' else Arabic5">
+      <ion-item>
+        <ion-label>{{'Age' | translate}}</ion-label>
+        <ion-datetime (ionChange)="range()" [(ngModel)]="dreamData.age" placeholder="{{'Birth' | translate}}" displayFormat="YYYY" min="1940" max="2015"></ion-datetime>
+      </ion-item>
+    </ion-list>
+
+  <ion-list *ngIf="lang=='en' else Arabic3">
+    <ion-item>
+      <ion-label>{{'Social' | translate}}</ion-label>
+      <ion-select [(ngModel)]="dreamData.social">
+        <ion-option value="0">{{'Single' | translate}}</ion-option>
+        <ion-option value="1">{{'Married' | translate}}</ion-option>
+        <ion-option value="2">{{'Divorced' | translate}}</ion-option>
+        <ion-option value="3">{{'Widewoed' | translate}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngIf="lang=='en' else Arabic4">
+    <ion-item>
+      <ion-label>{{'Job' | translate}}</ion-label>
+      <ion-select [(ngModel)]="dreamData.language">
+        <ion-option value="0">{{'Unemployed' | translate}}</ion-option>
+        <ion-option value="1">{{'Student' | translate}}</ion-option>
+        <ion-option value="2">{{'Employee' | translate}}</ion-option>
+        <ion-option value="3">{{'Business' | translate}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+
+  <ion-col col-12 *ngIf="lang=='en'"><img src="assets/Myimg/warn.png" alt="Logo"></ion-col>
+  <ion-col col-12 *ngIf="lang=='ar'" dir="rtl"><img src="assets/Myimg/warnar.png" alt="Logo"></ion-col>
+
+  <div class="send" *ngIf="lang=='en'">
+    <button ion-button round color="dream" class="sign" (click)="addD()">SEND DREAM
+      <ion-icon name="custom-login"></ion-icon>
+    </button>
+  </div>
+
+  <div class="send" *ngIf="lang=='ar'" dir="rtl">
+    <button ion-button round color="dream" class="ar" (click)="addD()">إرسال الحلم
+      <ion-icon name="custom-loginar"></ion-icon>
+    </button>
+  </div>
+
+</ion-content>
+
+
+<!-- ========================Arabic============================= -->
+
+<!-- <ng-template #Arabic>
+  <ion-list dir="rtl">
+    <ion-item>
+      <ion-label>{{'DreamType' | translate}}</ion-label>
+      <ion-select (ionChange)="notify()" [(ngModel)]="dreamData.dtype" onclick="show();">
+        <ion-option style="margin-left: 10px;" value="1">{{'Text' | translate}}</ion-option>
+        <ion-option value="0">{{'Voice' | translate}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ng-template> -->
+
+
+<ng-template #Arabic1>
+  <ion-list dir="rtl">
+    <ion-item>
+      <ion-label>{{'Gender' | translate}}</ion-label>
+      <ion-select [(ngModel)]="dreamData.gender">
+        <ion-option value="0" selected="true">{{'Male' | translate}}</ion-option>
+        <ion-option value="1">{{'FeMale' | translate}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ng-template>
+
+<ng-template #Arabic2>
+  <ion-list dir="rtl">
+    <ion-item>
+      <ion-label>{{'Language' | translate}}</ion-label>
+      <ion-select [(ngModel)]="dreamData.language">
+        <ion-option value="0">{{'Arabic' | translate}}</ion-option>
+        <ion-option value="1">{{'English' | translate}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ng-template>
+
+<ng-template #Arabic3>
+  <ion-list dir="rtl">
+    <ion-item>
+      <ion-label>{{'Social' | translate}}</ion-label>
+      <ion-select [(ngModel)]="dreamData.social">
+        <ion-option value="0">{{'Single' | translate}}</ion-option>
+        <ion-option value="1">{{'Married' | translate}}</ion-option>
+        <ion-option value="2">{{'Divorced' | translate}}</ion-option>
+        <ion-option value="3">{{'Widewoed' | translate}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ng-template>
+
+<ng-template #Arabic4>
+  <ion-list dir="rtl">
+    <ion-item>
+      <ion-label>{{'Job' | translate}}</ion-label>
+      <ion-select [(ngModel)]="dreamData.language">
+        <ion-option value="0">{{'Unemployed' | translate}}</ion-option>
+        <ion-option value="1">{{'Student' | translate}}</ion-option>
+        <ion-option value="2">{{'Employee' | translate}}</ion-option>
+        <ion-option value="3">{{'Business' | translate}}</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+</ng-template>
+
+<ng-template #Arabic5>
+    <ion-list dir="rtl">
+        <ion-item>
+          <ion-label>{{'Age' | translate}}</ion-label>
+          <ion-datetime (ionChange)="range()" [(ngModel)]="dreamData.age" placeholder="{{'Birth' | translate}}" displayFormat="YYYY" min="1940" max="2015"></ion-datetime>
+        </ion-item>
+    </ion-list>
+      
+  </ng-template>

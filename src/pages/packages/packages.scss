@@ -1,0 +1,76 @@
+page-packages {
+    ion-content{
+        background-image:url("../assets/Myimg/back.png");
+        background-size: cover;
+        text-align: center;
+      }
+
+      // .scroll-content {
+      //   overflow-y: hidden !important;
+      // }
+  
+    h5{
+      color: #555555;
+      margin-top: 0px !important;
+      font-family: bein;
+    }
+
+    .pack{
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+
+    // .pack img{
+    //       max-width: 107%;
+    // }
+
+    .pack ion-label{
+      position: absolute;
+      text-align: center;
+      z-index: 999;
+      left: 0;
+      right: 0;    
+      margin: 0 auto;
+      top: 20%; 
+      color: white;
+      font-size: 14px;
+    }
+
+    .pack ion-label.seconds{
+      position: absolute;
+      text-align: center;
+      z-index: 999;
+      left: 0;
+      right: 0;    
+      margin: 0 auto;
+      top: 30%; 
+      color: white;
+      font-size: 14px;
+    }
+
+    .pack ion-label.letter{
+      position: absolute;
+      text-align: center;
+      z-index: 999;
+      left: 0;
+      right: 0;    
+      margin: 0 auto;
+      top: 60%; 
+      color: #20BED7;
+      font-size: 12px;
+    }
+
+    .pack ion-label.price{
+      position: absolute;
+      text-align: center;
+      z-index: 999;
+      left: 0;
+      right: 0;    
+      margin: 0 auto;
+      top: 73%; 
+      color: #20BED7;
+      font-size: 12px;
+    }
+
+}

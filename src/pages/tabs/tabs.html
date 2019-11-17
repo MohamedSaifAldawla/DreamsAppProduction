@@ -1,0 +1,22 @@
+<ion-tabs *ngIf="visit!=4">
+  <ion-tab [root]="tab1Root" tabTitle="{{'home' | translate}}" tabIcon="home"></ion-tab>
+  <!-- <ion-tab [root]="tab4Root" tabTitle="Notifications" tabIcon="notifications-outline"></ion-tab> -->
+  <ion-tab [root]="tab2Root" tabTitle="{{'Profile' | translate}}" tabIcon="contact"></ion-tab>
+  <!-- <ion-tab (ionSelect)="GetUserDetails2()" tabTitle="Profile" tabIcon="contact"></ion-tab> -->
+  <ion-tab [root]="tab3Root" tabTitle="{{'Contact' | translate}}" tabIcon="call"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="{{'Lang' | translate}}" tabIcon="custom-lang"></ion-tab>
+  <ion-tab  (ionSelect)="logout()" tabTitle="{{'LogOut' | translate}}" tabIcon="custom-Logout"></ion-tab>
+</ion-tabs>
+
+<ion-tabs *ngIf="visit==4">
+  <ion-tab [root]="tab1Root" tabTitle="{{'home' | translate}}" tabIcon="home"></ion-tab>
+  <ion-tab [root]="tab3Root" tabTitle="{{'Contact' | translate}}" tabIcon="call"></ion-tab>
+  <ion-tab [root]="tab5Root" tabTitle="{{'Lang' | translate}}" tabIcon="custom-lang"></ion-tab>
+  <!-- <ion-tab (ionSelect)="logout()" tabTitle="{{'Lang' | translate}}" tabIcon="custom-lang"></!--> -->
+</ion-tabs>
+
+
+
+
+<!-- dreamsapp.net/setlocale/ar
+dreamsapp.net/setlocale/en -->

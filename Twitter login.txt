@@ -1,0 +1,17 @@
+qKAwoaj3PKoMTTg4pwW9dIQlO (API key)
+
+DPtGPR0IaUnxTeDB9W7zj6XHf4eTImR6HCKiHsFGoDUFMldF9A (API secret key)
+
+twitter
+
+      <meta-data
+          android:name="io.fabric.ApiKey"
+          android:value="ac49748f12bb215d343b22f05438e759ed9b1302"
+      />
+
+
+register
+name
+user
+email
+password

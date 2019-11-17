@@ -1,0 +1,28 @@
+page-help {
+    ion-content{
+        background-image:url("../assets/Myimg/back.png");
+        background-size: cover;
+        text-align: center;
+      }
+
+      
+  h1{
+    color: #20BED7;
+    margin-bottom: 40px;
+    font-weight: bold;
+  }
+
+  .swiper-slide img {
+    width: auto;
+    max-width: 100%;
+    height: auto;
+    max-height: 100%;
+    margin-bottom: 0px;
+}
+
+.swiper-pagination-bullet-active {
+    opacity: 1;
+    background-color:#20BED7;
+}
+
+}

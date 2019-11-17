@@ -1,0 +1,78 @@
+<ion-header no-border>
+  <ion-navbar hideBackButton>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <img src="assets/Myimg/Logo.png" alt="Logo">
+  <!-- <h1>Login To Your Account</h1> -->
+  <h1>{{'title' | translate}}</h1>
+
+  <!--<ion-icon name="ios-contact"></ion-icon>-->
+  <div>
+    <i class="fas fa-user"></i>
+    <input type="text" name="" value="" [(ngModel)]="userData.username" placeholder="{{'username' | translate}}">
+  </div>
+  <div>
+    <i class="fas fa-unlock-alt"></i>
+    <input type="password" name="" value="" [(ngModel)]="userData.password" placeholder="{{'pass' | translate}}">
+  </div>
+
+  <ion-grid *ngIf="lang=='en'">
+    <ion-row>
+      <ion-col col-12>
+        <div>
+          <button ion-button round color="dream" class="login" (click)="login()">Login
+            <ion-icon name="custom-login"></ion-icon>
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="lang=='ar'" dir="rtl">
+    <ion-row>
+      <ion-col col-12>
+        <div>
+          <button ion-button round color="dream" class="ar" (click)="login()">تسجيل دخول
+            <ion-icon name="custom-loginar"></ion-icon>
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+<!-- ===================================Browse App=========================== -->
+  <ion-grid *ngIf="lang=='en'">
+    <ion-row>
+      <ion-col col-12>
+        <div>
+          <button ion-button round color="trans" class="loginb" (click)="visitor(4)">Browse Our App
+            <ion-icon name="custom-Glasses"></ion-icon>
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="lang=='ar'" dir="rtl">
+    <ion-row>
+      <ion-col col-12>
+        <div>
+          <button ion-button round color="trans" class="browse" (click)="visitor(4)">تصفح التطبيق
+            <ion-icon name="custom-Glasses"></ion-icon>
+          </button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+    <p class="p1">{{'social' | translate}}</p>
+    <ion-col col-6>
+      <img tappable src="assets/Myimg/Facebook.svg" style="width:30px;margin-top:20px;cursor:pointer;margin-right: 10px;" (click)="loginFb()">
+      <img tappable src="assets/Myimg/Twitter.svg" style="width:30px;margin-top:20px;cursor:pointer;margin-right: 10px;" (click)="twLogin()">
+    </ion-col>
+
+  <p class="p1" href="#" onclick="window.open('http://dreamsapp.net/password/reset')" style="margin-top: -7px;">{{'forget' | translate}}</p>
+  <p>{{'noAcount' | translate}} <span (click)="rigester()">{{'create' | translate}}</span></p>
+
+</ion-content>

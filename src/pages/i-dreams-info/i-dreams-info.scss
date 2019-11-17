@@ -1,0 +1,93 @@
+page-i-dreams-info {
+
+    ion-content{
+        background-image:url("../assets/Myimg/back.png");
+        background-size: cover;
+        text-align: center;
+        //margin-top: 40px;
+        font-family: bein;
+      }
+      h1{
+        color: #20BED7;
+        margin-top: 20px !important;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+
+      h6{
+        color: #555555;
+        //margin-top: 60px !important;
+        margin-bottom: 10px;
+        font-weight: bold;
+      }
+    
+      input{
+        //margin-bottom: 10px;
+        text-align: center;
+        width: 140px;
+        height: 39px;
+        border: 1px solid #5d5d5d;
+        border-radius: 20px;
+        font-size: 15px;
+      }
+    
+      .subject{
+        margin-bottom: 10px;
+        margin-top: 10px;
+        //margin-left: 20px;
+        //margin-right: 20px;
+        text-align: center;
+        width: 300px;
+        height: 130px;
+        border: 2px solid #D2D2D2;
+        border-radius: 20px;
+        font-size: 15px;
+        box-shadow: 0 0 1px #719ECE;
+        padding: 10px;
+      }
+    
+      .subject:focus{
+        outline: none !important;
+        border-bottom: 2px solid #20BED7;
+      }
+    
+      input:focus {
+        outline: none !important;
+        border-bottom: 2px solid #20BED7;
+    }
+    
+    .fa-microphone
+    {
+      
+        font-size: 20px;
+        color:#20BED7;
+    }
+    
+    .list-ios >.item-block:first-child {
+       border-top:0; 
+    }
+    
+    
+    img{
+      width: 150px;
+      margin-bottom: 0px;
+      cursor: pointer;
+    }
+    
+    
+    button.sign{
+      margin-top: 30px;
+      display: inline-block;
+      font-size: 16px;
+      padding: 20px;
+      width: 152px;
+      height: 30px;
+      border: none;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+      text-transform: uppercase;
+    }
+
+    ion-icon {
+      margin-left: 21px;
+  }
+}

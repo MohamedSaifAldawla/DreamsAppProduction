@@ -1,0 +1,171 @@
+page-add {
+  ion-content{
+    background-image:url("../assets/Myimg/back.png");
+    background-size: cover;
+    text-align: center;
+    font-family: bein;
+  }
+  h1{
+    color: #20BED7;
+    margin-top: 10px !important;
+    margin-bottom: 10px;
+    font-weight: bold;
+  }
+
+  input{
+    margin-bottom: 10px;
+    text-align: center;
+    width: 60px;
+    height: 39px;
+    border: 1px solid #20BED7;
+    border-radius: 20px;
+    font-size: 15px;
+    display: inline-block;
+    background-color: #fff;
+  }
+  
+  .subject{
+    margin-bottom: 10px;
+    text-align: center;
+    width: 300px;
+    height: 100px;
+    border: 2px solid #D2D2D2;
+    border-radius: 20px;
+    font-size: 15px;
+    box-shadow: 0 0 1px #719ECE;
+    padding: 10px;
+  }
+
+  .subject:focus{
+    outline: none !important;
+    border-bottom: 2px solid #20BED7;
+  }
+  input:focus {
+    outline: none !important;
+    border-bottom: 2px solid #20BED7;
+}
+
+.fa-microphone
+{
+  
+    font-size: 20px;
+    color:#20BED7;
+}
+
+.list-ios >.item-block:first-child {
+   border-top:0; 
+}
+
+
+img{
+  width: 285px;
+  margin-bottom: 0px;
+  cursor: pointer;
+}
+
+html { margin:11px }
+
+button.sign{
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: 13px;
+  margin-right: 20px;
+  display: inline-block;
+  font-size: 15px;
+  padding: 20px;
+  width: 300px;
+  height: 30px;
+  border: none;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+ text-transform: uppercase
+}
+
+body{
+  margin-top: 10px;
+  position: relative !important;
+}
+
+.itemtab{
+  margin-bottom: 33px;
+  margin-top: 60px;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  border-bottom: 0 !important;
+  border-radius: 10px;
+  background-color: #20BED7
+}
+
+.itemtab p{
+  color: #fff
+}
+
+.time{
+  color: #20BED7;
+  margin-top: 10px;
+  margin-left: 3px;
+  font-size: 16px;
+}
+.send ion-icon {
+  font-size: 20px;
+  margin-right: -70px;
+  margin-left: 60px;
+  }
+
+  .button-clear-md {
+    color: #20BED7;
+}
+
+.select-ios .select-icon {
+  position: relative;
+  width: 12px;
+  height: 37px;
+}
+
+.list-ios > .item-block:first-child {
+  border-top: 0
+}
+.label-ios {
+  margin: 0px 8px 0px 0
+}
+
+.item-md {
+  font-size: 1.8rem;
+}
+.label-md {
+  margin: 0px 8px 0px 0
+}
+
+button.ar{
+  margin-top: 20px;
+  margin-bottom: 0px;
+  display: inline-block;
+  font-size: 18px;
+  padding: 22px;
+  width: 300px;
+  height: 30px;
+  border: none;
+  box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+  text-transform: uppercase
+}
+
+button.ar ion-icon {
+  font-size: 20px;
+     margin-right: 73px;
+        margin-left: -100px;
+  }
+
+  .datetime-ios .datetime-placeholder,
+  .datetime-md .datetime-placeholder {
+    color: #000;
+}
+
+.segment-ios .segment-button.segment-activated {
+  background-color: #20BED7;
+}
+
+
+.segment-ios .segment-button.segment-activated ion-icon
+{
+color: #fff !important;
+} 
+
+}

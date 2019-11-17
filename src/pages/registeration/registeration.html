@@ -1,0 +1,58 @@
+<ion-header no-border>
+    <ion-navbar>
+        <ion-buttons left>
+           </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+<img src="assets/Myimg/Add User Male_96px.png" alt="Logo">
+<h1>{{'create' | translate}}</h1>
+
+
+<div>
+  <i class="fas fa-user"></i>
+  <input type="text" name="" value="" [(ngModel)]="userData.name" placeholder="{{'name' | translate}}" >
+  </div>
+  
+  <div>
+  <i class="fas fa-user-tag"></i>
+  <input type="text" name="" value="" [(ngModel)]="userData.username" placeholder="{{'username' | translate}}" >
+  </div>
+
+<div>
+<i class="fas fa-envelope"></i>
+<input type="text" name="" value="" [(ngModel)]="userData.email" placeholder="{{'email' | translate}}">
+</div>
+
+<!-- <div>
+<i class="fas fa-user"></i>
+<input type="text" name="" value="" [(ngModel)]="userData.login" placeholder="Login" >
+</div> -->
+<div>
+<i class="fas fa-unlock-alt"></i>
+<input [type]="passwordType" name="" value="" [(ngModel)]="userData.password" placeholder="{{'pass' | translate}}" >
+<i class="fas fa-eye" style="margin-left: -33px; color:#20BED7; margin-right: 10px;" (click)="showPass()"></i>
+</div>
+
+<div>
+  <i class="fas fa-unlock-alt"></i>
+  <input [type]="passwordType" name="" value="" [(ngModel)]="userData.password_confirmation" placeholder="{{'passconfirm' | translate}}" >
+  </div>
+
+<ion-item class="check">
+  <ion-label>{{'terms' | translate}}</ion-label>
+  <ion-checkbox color="dream" checked="true"></ion-checkbox>
+</ion-item>
+
+<button ion-button round color="dream" class="sign" (click)="singup2()">{{'signup' | translate}}</button>
+
+<p>{{'already' | translate}}<span (click)="login2()">{{'login' | translate}}</span></p>
+
+<p class="p1">{{'social' | translate}}</p>
+<ion-col col-6>
+  <img tappable src="assets/Myimg/Facebook.svg" style="width:30px;margin-top:20px;cursor:pointer;margin-right: 0px;" (click)="loginFb()">
+  <img tappable src="assets/Myimg/Twitter.svg" style="width:30px;margin-top:20px;cursor:pointer;margin-right: 32px;" (click)="twLogin()">
+</ion-col>
+
+</ion-content>

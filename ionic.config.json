@@ -1,0 +1,14 @@
+{
+  "name": "Dreams",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "ionic-angular",
+  "proxies": [
+    {
+      "path": "/api",
+      "proxyUrl": "http://196.1.228.150:8000/api"
+    }
+  ],
+  "app_id": ""
+}

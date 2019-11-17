@@ -1,0 +1,7 @@
+<ion-tabs>
+    <ion-tab [root]="tab1Root" tabTitle="{{'home' | translate}}" tabIcon="home"></ion-tab>
+    <ion-tab [root]="tab2Root" tabTitle="{{'Dreams' | translate}}" tabIcon="custom-mynewicon" tabBadge="{{userDreams.length}}" tabBadgeStyle="danger"></ion-tab>
+    <ion-tab [root]="tab3Root" tabTitle="{{'Profile' | translate}}" tabIcon="contact"></ion-tab>
+    <ion-tab [root]="tab4Root" tabTitle="{{'Lang' | translate}}" tabIcon="custom-lang"></ion-tab>
+    <ion-tab  (ionSelect)="logout()" tabTitle="{{'LogOut' | translate}}" tabIcon="custom-Logout"></ion-tab>
+  </ion-tabs>

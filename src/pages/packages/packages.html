@@ -1,0 +1,34 @@
+<ion-header no-border>
+  <ion-navbar>
+      <ion-buttons left>
+         </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+
+  <h5>{{'Choose' | translate}}</h5>
+  
+    <!-- <button ion-button round color="dream" class="ar" (click)="getProducts()">purchase
+      <ion-icon name="custom-loginar"></ion-icon>
+    </button>
+    <button ion-button round class="ar" (click)="buy()">buy
+      <ion-icon name="custom-loginar"></ion-icon>
+    </button> -->
+    
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 *ngFor="let item of responseData" style="margin-top:20px;">
+        <div class="pack" (click)="Get_package(item.id)">
+          <img src="assets/Myimg/package.png" alt="package">
+          <ion-label hidden>{{item.id}}</ion-label>
+          <ion-label >{{item.voice}}</ion-label>
+          <ion-label class="seconds">{{'Seconds' | translate}}</ion-label>
+          <ion-label class="letter">{{item.text}} {{'Letters' | translate}}</ion-label>
+          <ion-label class="price">{{item.price}} $</ion-label>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>

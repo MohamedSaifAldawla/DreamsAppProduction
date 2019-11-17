@@ -1,0 +1,229 @@
+<ion-header no-border>
+    <ion-navbar>
+        <ion-buttons left>
+           </ion-buttons>
+    </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+    <h1>{{'Check' | translate}}</h1>
+  <ion-list *ngIf="lang=='en' else Arabic">
+    <ion-item class="itemtab" style="padding-bottom: 20px;">
+      <h2>{{'Info' | translate}}</h2>
+      <ion-grid style="margin-top: 30px">
+        <ion-row>
+          <ion-col col-6>
+            <p class="name">{{'id' | translate}}</p>
+          </ion-col>
+          <ion-col col-6>
+            <p class="info">{{dream.id}}</p>
+            <!-- <p class="info">35352</p> -->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <hr>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <p class="name">{{'Package' | translate}}</p>
+          </ion-col>
+          <ion-col col-6>
+            <p class="info">{{dream.package_id}}</p>
+            <!-- <p class="info">35352</p> -->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <hr>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6>
+            <p class="name">{{'Price' | translate}}</p>
+          </ion-col>
+          <ion-col col-6>
+            <p class="info" style="color: gold">{{package.price}} $</p>
+            <!-- <p class="info" style="color: gold">35352 $</p> -->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+      <hr>
+
+
+    <ion-card class="card" *ngIf="dream.voice_url==null" >
+          <ion-card-header>
+            <p class="name">{{'WriteDream' | translate}}</p>
+          </ion-card-header>
+          <ion-card-content>{{dream.body}}</ion-card-content>
+        </ion-card>
+
+
+        <div>
+            <audio controls *ngIf="dream.voice_url!=null">
+              <source src="http://dreamsapp.net/storage/{{dream.voice_url}}" type="audio/mp3">
+                <!-- <source src="http://10.117.18.35:8000/storage/{{dream.voice_url}}" type="audio/mp3"> -->
+                Your browser does not support the audio element.
+            </audio>
+          </div>
+
+        </ion-item>
+  </ion-list>
+
+  <!-- <button ion-button (click)="openWithInAppBrowser('https://www.techiediaries.com')">Open with System browser</button> -->
+
+  <ion-list>
+    <h6>{{'Payment' | translate}}</h6>
+    <ion-item class="itemtab" style="height: 61px;">
+      <ion-grid>
+        <ion-row (click)="tapPay(dream.id)">
+          <ion-col col-4>
+            <img src="assets/Myimg/Visa.svg" alt="Logo"> 
+            <img src="assets/Myimg/Mastercard Logo.svg" alt="Logo">
+          </ion-col>
+
+          <ion-col col-4>
+            <p class="Pname" style="margin-left: 10px;">Visa / Mastercard</p>
+          </ion-col>
+
+          <ion-col col-4>
+            <ion-icon name="custom-go"></ion-icon>
+            <!-- <button ion-button icon-end color="dream" class="sign">
+              Select
+            </button> -->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
+
+  <ion-list>
+      <ion-item class="itemtab" style="height: 61px;">
+        <ion-grid>
+          <ion-row (click)="payPal(dream.id)">
+            <ion-col col-4>
+              <img src="assets/Myimg/PayPal.svg" alt="Logo">
+            </ion-col>
+  
+            <ion-col col-4>
+              <p class="Pname">PayPal</p>
+            </ion-col>
+  
+            <ion-col col-4>
+              <ion-icon name="custom-go"></ion-icon>
+              <!-- <button ion-button icon-end color="dream" class="sign">
+                Select
+              </button> -->
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-item>
+    </ion-list>
+
+    <!-- <ion-list>
+        <ion-item class="itemtab" style="height: 61px;">
+          <ion-grid>
+            <ion-row (click)="tapPay()">
+              <ion-col col-4>
+                <img src="assets/Myimg/Mastercard Logo.svg" alt="Logo">
+              </ion-col>
+    
+              <ion-col col-4>
+                <p class="Pname">Mastercard</p>
+              </ion-col>
+    
+              <ion-col col-4>
+                <ion-icon name="custom-go"></ion-icon>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-item>
+      </ion-list> -->
+
+
+
+
+
+  <!-- <ion-grid style="margin-top:30px">
+            <ion-row>
+              <ion-col col-12>
+                <div>
+                <button ion-button icon-end color="dream" round class="sign">
+                    Visa / Master
+                    <ion-icon name="ios-send-outline"></ion-icon>
+                  </button>
+              </div>
+              </ion-col>
+              <ion-col col-12>
+                  <div>
+                      <button ion-button icon-end color="danger" round class="sign">
+                          Paypal
+                          <ion-icon name="ios-undo-outline"></ion-icon>
+                        </button>
+                    </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid> -->
+
+<!-- ===============================Arabic======================== -->
+
+<ng-template #Arabic>
+    <ion-list dir="rtl">
+        <ion-item class="itemtab" style="padding-bottom: 20px;">
+          <h2>{{'Info' | translate}}</h2>
+          <ion-grid style="margin-top: 30px">
+            <ion-row>
+              <ion-col col-6>
+                <p class="name">{{'id' | translate}}</p>
+              </ion-col>
+              <ion-col col-6>
+                <p class="info" style="text-align: left;">{{dream.id}}</p>
+                <!-- <p class="info">35352</p> -->
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <hr>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                <p class="name">{{'Package' | translate}}</p>
+              </ion-col>
+              <ion-col col-6>
+                <p class="info" style="text-align: left;">{{dream.package_id}}</p>
+                <!-- <p class="info">35352</p> -->
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <hr>
+          <ion-grid>
+            <ion-row>
+              <ion-col col-6>
+                <p class="name">{{'Price' | translate}}</p>
+              </ion-col>
+              <ion-col col-6>
+                <p class="info" style="color: green;text-align: left;">{{package.price}} $</p>
+                <!-- <p class="info" style="color: gold">35352 $</p> -->
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <hr>
+    
+    
+        <ion-card class="card" *ngIf="dream.voice_url==null" >
+              <ion-card-header>
+                <p class="name">{{'WriteDream' | translate}}</p>
+              </ion-card-header>
+              <ion-card-content>{{dream.body}}</ion-card-content>
+            </ion-card>
+    
+    
+            <div>
+                <audio controls *ngIf="dream.voice_url!=null">
+                  <source src="http://dreamsapp.net/storage/{{dream.voice_url}}" type="audio/mp3">
+                    <!-- <source src="http://10.117.18.35:8000/storage/{{dream.voice_url}}" type="audio/mp3"> -->
+                    Your browser does not support the audio element.
+                </audio>
+              </div>
+    
+            </ion-item>
+      </ion-list>
+</ng-template>
+
+</ion-content>

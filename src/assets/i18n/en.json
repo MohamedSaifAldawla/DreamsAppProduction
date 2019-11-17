@@ -1,0 +1,95 @@
+{
+    
+    
+    "title": "Login To Your Account",
+    "username": "User name",
+    "name":"Name",
+    "email":"Email",
+    "pass": "Password",
+    "passconfirm":"Password Confirmation",
+    "login": "Login",
+    "forget": "Forget Your Password?",
+    "noAcount": "Have No Account ?",
+    "create": "Create New Account",
+    "terms":"I Accept Terms And Conditions",
+    "already":"Already Have Account ?  ",
+    "signup":"SIGN UP",
+    "phone":"Phone",
+    "social":"Login with",
+
+
+    "home":"Home",
+    "Profile":"Profile",
+    "Contact":"Contact",
+    "Notifications":"Notifications",
+    "Lang":"language",
+    "LogOut":"LogOut",
+    "Dreams":"Dreams",
+    "txt":"Your Text",
+    "Sendtxt":"Send",
+    "Return":"Return",
+
+
+    "Home":"Home",
+    "Add":"Add Dream",
+    "Dreams":"My Dreams",
+    "Articles":"Articles",
+    "Help":"Help",
+
+
+    "Choose":"Please choose your package !",
+
+
+    
+    "Letters":"Letters",
+    "Seconds":"Seconds",
+    "DreamType":"Select Dream Type",
+    "Text":"Text",
+    "Voice2":"Voice",
+    "WriteDream":"Write your dream here...",
+    "Start":"Start Recording",
+    "Stop":"Stop Recording",
+    "Gender":"Gender",
+    "Male":"Male",
+    "FeMale":"FeMale",
+    "Language":"Language",
+    "Arabic":"العربيه",
+    "English":"English",
+    "Social":"Social Status",
+    "Single":"Single",
+    "Married":"Married",
+    "Divorced":"Divorced",
+    "Widewoed":"Widewoed",
+    "Job":"Job Status",
+    "Unemployed":"Unemployed",
+    "Student":"Student",
+    "Employee":"Employee",
+    "Business":"Business Man",
+    "Send":"Send Dream",
+    "Interpretation":"Dream Interpretation",
+    "Payment":"Choose Payment Method",
+    "Package":"Package",
+    "id":"Dream id",
+    "State":"Dream state",
+    "Info":"Dream Information",
+    "All":"All",
+    "No-txt":"No Text",
+    "Voice":"Voice Included",
+    "No-voice":"No Voice",
+    "Price":"Price",
+    "Check":"Check Out",
+    "Age":"Age",
+    "Birth":"Date Of Birth",
+    "Pay":"Un Paid",
+
+
+    "Statistics":"Statistics",
+    "24":"24 hours",
+    "Month":"Month",
+    "Solved":"Solved",
+    "Pending":"Pending",
+    "Speed":"Speed Avarage",
+    "Interpreting":"Interpreting Avarage"
+   
+
+}

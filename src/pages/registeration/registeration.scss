@@ -1,0 +1,147 @@
+page-registeration {
+  ion-content{
+    background-image:url("../assets/Myimg/back.png");
+    background-size: cover;
+    text-align: center;
+  }
+
+  // .scroll-content {
+  //   overflow-y: hidden !important;
+  // }
+  img{
+      margin-top: 10px;
+      margin-left: 30px;
+      margin-bottom: 0px;
+    }
+
+  h1{
+    color: #20BED7;
+    margin-bottom: 10px;
+    font-weight: bold;
+    margin-top: 5px;
+    font-family: bein;
+  }
+
+  p{
+    color: #797979;
+    font-size: 14px;
+    font-family: bein;
+    margin-bottom: 0;
+    margin-top: 0;
+  }
+
+  p.p1{
+    color: #20BED7;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 0px;
+    margin-bottom: -17px;
+  }
+
+  P span{
+    color: #20BED7;
+    font-weight: bold;
+    font-family: bein;
+    cursor: pointer;
+  }
+  input{
+    margin-bottom: 10px;
+    text-align: center;
+    width: 300px;
+    height: 39px;
+    border: 1px solid #20BED7;
+    border-radius: 20px;
+    font-size: 17px;
+    font-family: bein;
+  }
+  .fa-user {
+      font-size: 20px;
+      position: absolute;
+      margin-left: 16px;
+      margin-top: 9px;
+      color:#20BED7;
+  }
+  .fa-envelope
+  {
+      position: absolute;
+      font-size: 20px;
+      margin-left: 16px;
+      margin-top: 9px;
+      color:#20BED7;
+  }
+  .fa-phone
+  {
+      position: absolute;
+      font-size: 20px;
+      margin-left: 16px;
+      margin-top: 9px;
+      color:#20BED7;
+  }
+
+  .fa-calendar-alt
+  {
+      position: absolute;
+      font-size: 20px;
+      margin-left: 16px;
+      margin-top: 9px;
+      color:#20BED7;
+  }
+  .fa-user-tag
+  {
+      position: absolute;
+      font-size: 20px;
+      margin-left: 16px;
+      margin-top: 9px;
+      color:#20BED7;
+  }
+
+  .fa-unlock-alt
+  {
+      position: absolute;
+      font-size: 20px;
+      margin-left: 16px;
+      margin-top: 9px;
+      color:#20BED7;
+  }
+  ::placeholder{
+  color:#797979;
+  font-family: bein;
+  font-size: 15px;
+  }
+
+.check{
+margin-left: 10px;
+}
+
+.check ion-label{
+color:  #797979;
+}
+
+  button.sign{
+      margin-top: 10px;
+      margin-bottom: 15px;
+      display: inline-block;
+      font-size: 17px;
+      padding: 20px;
+      width: 300px;
+      height: 30px;
+      border: none;
+      box-shadow: 0px 8px 15px rgba(0, 0, 0, 0.2);
+      font-family: bein;
+
+  }
+
+  .item-md.item-block .item-inner {
+    padding-right: 8px;
+    border-bottom: none;
+}
+
+.item.item-md .checkbox-md {
+  margin: 9px 12px 9px 4px;
+}
+
+.item-ios.item-block .item-inner {
+  border-bottom: none;
+}
+
+}

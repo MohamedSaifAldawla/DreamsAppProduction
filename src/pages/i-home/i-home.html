@@ -1,0 +1,38 @@
+<ion-content padding>
+  <h1>Home</h1>
+
+
+  <div>
+
+    <ion-grid>
+        <div class="item">
+          <ion-row style="margin-top: 20px;">
+            <ion-col col-6 (click)="dreams()">
+              <div class="stats">
+                <ion-row>
+                  <ion-col col-12>
+                    <ion-badge color="danger">{{userDreams.length}}</ion-badge>
+                  </ion-col>
+                </ion-row>
+                <img src="assets/Myimg/Dreams.png">
+                <p>My Dreams</p>
+              </div>
+            </ion-col>
+  
+            <ion-col col-6 (click)="help()">
+              <div class="stats">
+                  <ion-row style="padding-top: 20px;">
+                      <ion-col col-12>
+                      </ion-col>
+                    </ion-row>
+                <img src="assets/Myimg/Help.png">
+                <p>Help</p>
+              </div>
+            </ion-col>
+    
+          </ion-row>
+        </div>
+      </ion-grid>
+    </div>
+
+</ion-content>
