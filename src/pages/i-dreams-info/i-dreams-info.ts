@@ -156,7 +156,7 @@ export class IDreamsInfoPage {
     console.log(this.dreamData.dtype);
     console.log(this.dreamData.id);
     // fileTransfer.upload(this.filePath, 'http://10.117.18.35:8000/api/dreams', options)
-     fileTransfer.upload(this.filePath, 'http://dreamsapp.net/api/interpret/reply', options)
+     fileTransfer.upload(this.filePath, 'https://dreamsapp.net/api/interpret/reply', options)
     //fileTransfer.upload(this.filePath, 'http://196.1.228.150:8000/api/voice4', options)
       .then((data) => {
       //console.log(data+" Created Successfully ");

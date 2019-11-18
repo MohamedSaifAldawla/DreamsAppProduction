@@ -175,7 +175,7 @@ export class AddPage {
       
     }
     //console.log(this.dreamData);
-     fileTransfer.upload(this.filePath, 'http://dreamsapp.net/api/dreams', options)
+     fileTransfer.upload(this.filePath, 'https://dreamsapp.net/api/dreams', options)
       .then((result) => {
       // console.log(data+" Created Successfully ");
       this.responseData=result;
