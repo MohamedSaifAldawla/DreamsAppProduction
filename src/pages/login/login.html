@@ -18,6 +18,16 @@
     <input type="password" name="" value="" [(ngModel)]="userData.password" placeholder="{{'pass' | translate}}">
   </div>
 
+  <ion-item *ngIf="lang=='ar'">
+    <ion-label>{{'Remember' | translate}}</ion-label>
+    <ion-toggle checked="true" [(ngModel)]="toggleValue" (ionChange)="SaveData()"></ion-toggle>
+  </ion-item>
+
+  <ion-item *ngIf="lang=='en'" dir="rtl" >
+    <ion-label style="text-align: left;">{{'Remember' | translate}}</ion-label>
+    <ion-toggle [(ngModel)]="toggleValue" (ionChange)="SaveData()"></ion-toggle>
+  </ion-item>
+
   <ion-grid *ngIf="lang=='en'">
     <ion-row>
       <ion-col col-12>
@@ -68,11 +78,14 @@
 
     <p class="p1">{{'social' | translate}}</p>
     <ion-col col-6>
-      <img tappable src="assets/Myimg/Facebook.svg" style="width:30px;margin-top:20px;cursor:pointer;margin-right: 10px;" (click)="loginFb()">
+      <!-- <img tappable src="assets/Myimg/Facebook.svg" style="width:30px;margin-top:20px;cursor:pointer;margin-right: 10px;" (click)="loginFb()"> -->
+      <img tappable src="assets/Myimg/Facebook.svg" style="width:30px;margin-top:20px;cursor:pointer;margin-right: 10px;" (click)="loginFb_FireBase()">
       <img tappable src="assets/Myimg/Twitter.svg" style="width:30px;margin-top:20px;cursor:pointer;margin-right: 10px;" (click)="twLogin()">
+    <img tappable src="assets/Myimg/apple.png" style="width:30px;margin-top:20px;cursor:pointer;margin-right: 10px;" (click)="signinwithapple()" class='apple'>
     </ion-col>
 
-  <p class="p1" href="#" onclick="window.open('http://dreamsapp.net/password/reset')" style="margin-top: -7px;">{{'forget' | translate}}</p>
+  <p class="p1" href="#" onclick="window.open('https://dreamsapp.net/password/reset')" style="margin-top: -7px;">{{'forget' | translate}}</p>
   <p>{{'noAcount' | translate}} <span (click)="rigester()">{{'create' | translate}}</span></p>
 
+  <!-- <p>Powerd By BOS Information Technology</p> -->
 </ion-content>

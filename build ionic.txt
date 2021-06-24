@@ -1,12 +1,22 @@
 
-//-- build the app --keystore & key pass will be needed
+//-- ---------build the app --keystore & key pass will be needed------------------------//
+
+ionic cordova build --release android
+
 ionic cordova build android --prod --release -- -- --keystore=dreamsinterpreter.keystore --alias=dreams
 
-//-- Sign the app
+//-- ----------------------------Sign the app------------------------------------------//
+
 jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore dreamsinterpreter.keystore app-release-unsigned.apk dreams
 
-//-- zip the apk
+//-- --------------------------------zip the apk----------------------------------------------//
+
 C:\Users\golden black\AppData\Local\Android\Sdk\build-tools\29.0.0-rc1
 ? zipalign -v 4 E:\Dreams\Dreams(15).apk E:\Dreams\DreamsApp.apk
 
 zipalign -v 4 app-release-unsigned.apk Dreamsinterpreter.apk
+
+
+// --------------------------------App Hashes For Facebook-----------------------------------//
+
+keytool -exportcert -alias Dreams -keystore E:\Dreams\dreamsinterpreter.keystore | C:\OpenSSL\bin\openssl sha1 -binary |C:\OpenSSL\bin\openssl base64

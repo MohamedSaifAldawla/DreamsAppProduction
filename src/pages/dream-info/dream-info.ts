@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { InAppBrowser, InAppBrowserOptions } from '@ionic-native/in-app-browser/ngx';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -13,7 +13,6 @@ import { TranslateService } from '@ngx-translate/core';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-dream-info',
   templateUrl: 'dream-info.html',
@@ -23,7 +22,6 @@ export class DreamInfoPage {
   public responseData : any;
   loading: any;
   public lang:any;
-
 
   options : InAppBrowserOptions = {
     location : 'yes',//Or 'no' 
@@ -64,7 +62,8 @@ export class DreamInfoPage {
     this.responseData= result;
     console.log(id);
     console.log(this.responseData); 
-    this.openWithInAppBrowser(this.responseData.Dream);
+    this.openWithCordovaBrowser(this.responseData.Dream);
+    //this.theInAppBrowser.create(this.responseData.Dream,'_system');
     if(this.responseData.message=='Approved')
     {
       this.navCtrl.push(DreamsPage);
@@ -79,12 +78,16 @@ export class DreamInfoPage {
     // this.presentToast("err");
    // this.presentToast("error",err.message);
    if(err.status=401)
-   {
-     this.presentToast("error",JSON.stringify(err.error.errors));
-   }
-   else{
-     this.presentToast("error",err.message);
-   }
+    {
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
+    }
     }); 
   }
   
@@ -95,7 +98,7 @@ export class DreamInfoPage {
     this.responseData= result;
     console.log(id);
     //console.log(this.responseData); 
-    this.openWithInAppBrowser(this.responseData.Dream);
+    this.openWithCordovaBrowser(this.responseData.Dream);
     if(this.responseData.message=='Approved')
     {
       this.navCtrl.push(DreamsPage);
@@ -111,10 +114,14 @@ export class DreamInfoPage {
    // this.presentToast("error",err.message);
    if(err.status=401)
    {
-     this.presentToast("error",JSON.stringify(err.error.errors));
-   }
-   else{
-     this.presentToast("error",err.message);
+     if(this.lang=='en')
+     {
+       this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+     }
+     else if(this.lang=='ar')
+       {
+         this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+       }
    }
     }); 
   }

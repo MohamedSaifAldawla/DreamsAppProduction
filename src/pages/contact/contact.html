@@ -20,7 +20,11 @@
   </div> -->
 
   <div>
-    <input class="subject" type="text" name="" [(ngModel)]="contactData.body" value="" placeholder="{{'txt' | translate}}" >
+    <!-- <input class="subject" type="text" name="" [(ngModel)]="contactData.body" value="" placeholder="{{'txt' | translate}}" > -->
+
+    <textarea class="subject" id="textarea" rows="8" cols="20"
+    type="text" name="" value="" [(ngModel)]="contactData.body" placeholder="{{'txt' | translate}}">
+  </textarea>
     </div>
 
   <button ion-button round color="dream" class="sign" (click)="send()">{{'Sendtxt' | translate}}</button>

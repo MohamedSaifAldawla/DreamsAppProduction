@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams , LoadingController, ToastController } from 'ionic-angular';
+import { NavController, NavParams , LoadingController, ToastController } from 'ionic-angular';
 import { LoginPage } from '../login/login';
 import { TabsPage } from '../tabs/tabs';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
@@ -8,14 +8,17 @@ import { log } from 'util';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { AngularFireAuth } from '@angular/fire/auth';
 import { auth } from 'firebase/app';
+import { SignInWithApple, AppleSignInResponse, AppleSignInErrorResponse, ASAuthorizationAppleIDRequest } from '@ionic-native/sign-in-with-apple/ngx';
+
 /**
  * Generated class for the RegisterationPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
  */
+declare var cordova: any;
 
-@IonicPage()
+
 @Component({
   selector: 'page-registeration',
   templateUrl: 'registeration.html',
@@ -31,12 +34,16 @@ export class RegisterationPage {
 
   public fbData ={"name":"", "username": "","email":"","fb": "1","id":""};
   public twData ={"name":"", "username": "","email":"","fb": "1","id":""};
+  public apData ={"name":"", "username": "","email":"","fb": "1","id":""};
+
   public userDetails : any;
   public visit : any;
+  public apple:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public authService:AuthServiceProvider,
     public loadingCtrl: LoadingController, private toastCtrl: ToastController,
-    public translate: TranslateService,private fb: Facebook,public afAuth: AngularFireAuth) {
+    public translate: TranslateService,private fb: Facebook,public afAuth: AngularFireAuth,
+    public signInWithApple: SignInWithApple) {
   }
 
   ionViewCanEnter(){
@@ -44,6 +51,11 @@ export class RegisterationPage {
     const dataa = localStorage.getItem("lan");
     this.lang = dataa;
     console.log(this.lang);
+
+    localStorage.getItem('apple_data');
+    this.apple=JSON.parse(localStorage.getItem('apple_data'));
+    console.log(this.apple);
+    
   }
 
   login2()
@@ -64,15 +76,18 @@ export class RegisterationPage {
         console.log(this.responseData); 
       //localStorage.setItem('userData',this.responseData);
       this.loading.dismiss();
+    //     this.presentToast("success",this.responseData.Message);
+
       // this.presentToast("User Registerd Successfully")
       if(this.lang=='en')
       {
-        //this.presentToast("success",this.responseData.Message);
-        this.presentToast("success","Registerd Successfully, Check your email to activate your account")
+        this.presentToast("success",this.responseData.message);
+        //this.presentToast("success","Registerd Successfully, Check your email to activate your account")
       }
      else if(this.lang=='ar')
       {
-        this.presentToast("success","تم التسجيل ,الرجاء التحقق من الإيميل لتفعيل الحساب")
+        //this.presentToast("success","تم التسجيل ,الرجاء التحقق من الإيميل لتفعيل الحساب")
+        this.presentToast("success",this.responseData.message2);
 
       }
       this.navCtrl.push(LoginPage);
@@ -80,7 +95,7 @@ export class RegisterationPage {
       console.log(err); 
       this.loading.dismiss();
       // this.presentToast("Please Enter Valid Data...");
-     this.presentToast("error",err.error.message);
+     //this.presentToast("error",err.error.message);
       this.presentToast("error",JSON.stringify(err.error.errors));
       }); 
   }
@@ -164,11 +179,19 @@ export class RegisterationPage {
     // this.presentToast("Your Token is Expired, Login Again or check your connection ...!");
     if(err.status=401)
     {
-      this.presentToast("error",err.error.error);
+      if(this.lang=='en')
+      {
+        this.presentToast("error",err.error.error3);
+      
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error",err.error.error4);      
+        }
     }
-    else{
-      this.presentToast("error",err.message);
-    }
+    // else{
+    //   this.presentToast("error",err.message);
+    // }
     //this.presentToast("error",err.error.message);
     }); 
   }
@@ -240,13 +263,65 @@ twLogin(){
     console.log(this.twData);
     this.singuptw();
     }
-    else{
-      this.presentToast("error","Error connecting to twitter");
-    }
+    if(this.lang=='en')
+      {
+      this.presentToast("error","Error connecting to twitter");        
+      }
+      else if(this.lang=='ar')
+        {
+      this.presentToast("error","فشل في الإتصال مع تويتر");         
+        }
+  
   }).catch(ERROR =>{
         this.presentToast("error",JSON.stringify(ERROR .error));
   });
 
+}
+//=========================================Apple Login============================================//
+
+signinwithapple()
+{
+  if(localStorage.getItem('apple_data')!=null)
+{
+  // this.apple=localStorage.getItem('apple_data');
+  this.apData.name=this.apple.name;
+  this.apData.username=this.apple.username;
+  this.apData.email=this.apple.email;
+  this.apData.fb= '1';
+  this.apData.id=this.apple.id;
+  console.log(this.apData);
+  this.singupapple();
+}
+
+else if(localStorage.getItem('apple_data')==null)
+{
+  cordova.plugins.SignInWithApple.signin(
+    { requestedScopes: [0, 1] },
+    (succ)=>{
+    console.log(succ);
+    //alert(JSON.stringify(succ))
+    this.apData.name=succ.fullName.givenName;
+    this.apData.username=succ.fullName.familyName;
+    this.apData.email=succ.email;
+    this.apData.id=succ.user;
+    console.log(this.apData);
+    this.singupapple();
+
+    },
+    function(err){
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Error connecting to Apple");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","فشل في الإتصال مع أبل");
+        }
+    // console.error(err)
+    // console.log(JSON.stringify(err))
+    }
+    )
+}
 }
 
 singup()
@@ -315,6 +390,38 @@ singuptw()
     }); 
 }
 
+singupapple()
+{
+    localStorage.setItem('visit','0');
+    this.showLoader4();
+    this.authService.postData(this.apData).then((result) => { 
+    this.responseData= result;
+    console.log(this.responseData); 
+    this.loading.dismiss();
+    if(this.responseData.access_token!=null)
+    {
+      localStorage.setItem('access_token', this.responseData.access_token);
+      this.GetUserDetails();
+    }
+    else if(this.responseData.access_token==null)
+    {
+    if(this.lang=='en')
+    {
+      this.presentToast("success","Registerd Successfully, Check your email to activate your account")
+    }
+   else if(this.lang=='ar')
+    {
+      this.presentToast("success","تم التسجيل ,الرجاء التحقق من الإيميل لتفعيل الحساب")
+
+    }
+  }
+    }, (err) => { 
+    console.log(err); 
+    this.loading.dismiss();
+    this.presentToast("error",err.error.message);
+    this.presentToast("error",JSON.stringify(err.error.errors));
+    }); 
+}
 
 GetUserDetails(){ 
   this.authService.UserDetails(localStorage.getItem("access_token")).then((result) => { 
@@ -329,10 +436,14 @@ GetUserDetails(){
   //this.presentToast("error",err.message);
   if(err.status=401)
     {
-      this.presentToast("error",err.error.error);
-    }
-    else{
-      this.presentToast("error",err.message);
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
     }
   }); 
 }
@@ -353,10 +464,14 @@ Getdreams(){
    //this.presentToast("error",err.message);
    if(err.status=401)
     {
-      this.presentToast("error",err.error.message);
-    }
-    else{
-      this.presentToast("error",err.message);
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
     }
     }); 
  }
@@ -375,10 +490,14 @@ Getdreams(){
     //this.presentToast("error",err.message);
     if(err.status=401)
     {
-      this.presentToast("error",err.error.error);
-    }
-    else{
-      this.presentToast("error",err.message);
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
     }
    
   }); 
@@ -453,7 +572,7 @@ else if(this.lang=='ar')
 presentToast(type,msg) {
   let toast = this.toastCtrl.create({
     message: msg,
-    duration: 3000,
+    duration: 4000,
     position: 'bottom',
     cssClass:type,
     // dismissOnPageChange: true

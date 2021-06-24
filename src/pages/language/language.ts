@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController,Platform } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController,Platform } from 'ionic-angular';
 import { TranslateService } from '@ngx-translate/core';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 
@@ -10,7 +10,6 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-language',
   templateUrl: 'language.html',

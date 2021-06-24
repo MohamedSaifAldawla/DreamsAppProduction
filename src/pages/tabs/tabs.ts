@@ -45,12 +45,17 @@ export class TabsPage {
       this.lang = dataa;
       console.log(this.lang);
       
-     this.GetUserDetails();
     const data3 = JSON.parse(localStorage.getItem("userData"));
     this.userDetails = data3;
 
     const data4 = JSON.parse(localStorage.getItem("visit"));
       this.visit = data4;
+
+      if(data4 != 4)
+      {
+        this.GetUserDetails();
+      }
+
 
   }
 
@@ -68,10 +73,14 @@ export class TabsPage {
       // this.presentToast("error",err.message);
       if(err.status=401)
     {
-      this.presentToast("error",err.error.error);
-    }
-    else{
-      this.presentToast("error",err.message);
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
     }
     }); 
    }
@@ -86,10 +95,14 @@ export class TabsPage {
    // this.presentToast("Your Token is Expired, Login Again or check your connection ...!");
    if(err.status=401)
     {
-      this.presentToast("error",err.error.error);
-    }
-    else{
-      this.presentToast("error",err.message);
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
     }
     }); 
   }

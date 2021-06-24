@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController  } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController  } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { InterpretorProfilePage } from '../../pages/interpretor-profile/interpretor-profile';
 import { HomePage } from '../../pages/home/home';
@@ -13,7 +13,6 @@ import { TranslateService } from '@ngx-translate/core';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-profile',
   templateUrl: 'profile.html',

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController,Platform } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController,Platform } from 'ionic-angular';
 import { LoginPage } from '../../pages/login/login';
 import { TranslateService } from '@ngx-translate/core';
 import { AddPage } from '../../pages/add/add';
@@ -19,7 +19,6 @@ import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-lang',
   templateUrl: 'lang.html',
@@ -33,7 +32,11 @@ export class LangPage {
      public loadingCtrl: LoadingController, private toastCtrl: ToastController,public platform: Platform,
     public translate: TranslateService,public authService:AuthServiceProvider) {
 
-   
+      if (window.indexedDB) {
+        console.log("I'm in WKWebView!");
+     } else {
+        console.log("I'm in UIWebView");
+     }
 
   }
 

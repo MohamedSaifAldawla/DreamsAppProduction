@@ -58,8 +58,8 @@
 
         <div>
             <audio controls *ngIf="dream.voice_url!=null">
-              <source src="http://dreamsapp.net/storage/{{dream.voice_url}}" type="audio/mp3">
-                <!-- <source src="http://10.117.18.35:8000/storage/{{dream.voice_url}}" type="audio/mp3"> -->
+              <!-- <source src="https://212.237.28.169/storage/{{dream.voice_url}}" type="audio/mp3"> -->
+                <source src="http://10.117.18.35:8000/storage/{{dream.voice_url}}" type="audio/mp3">
                 Your browser does not support the audio element.
             </audio>
           </div>
@@ -68,9 +68,31 @@
   </ion-list>
 
   <!-- <button ion-button (click)="openWithInAppBrowser('https://www.techiediaries.com')">Open with System browser</button> -->
+  <h6>{{'Payment' | translate}}</h6>
+  <ion-list>
+    <ion-item class="itemtab" style="height: 61px;">
+      <ion-grid>
+        <ion-row>
+          <ion-col col-4>
+            <img src="assets/Myimg/apple2.png" alt="Logo">
+          </ion-col>
+
+          <ion-col col-4>
+            <p class="Pname">Pay</p>
+          </ion-col>
+
+          <ion-col col-4>
+            <ion-icon name="custom-go"></ion-icon>
+            <!-- <button ion-button icon-end color="dream" class="sign">
+              Select
+            </button> -->
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-item>
+  </ion-list>
 
   <ion-list>
-    <h6>{{'Payment' | translate}}</h6>
     <ion-item class="itemtab" style="height: 61px;">
       <ion-grid>
         <ion-row (click)="tapPay(dream.id)">
@@ -117,51 +139,7 @@
       </ion-item>
     </ion-list>
 
-    <!-- <ion-list>
-        <ion-item class="itemtab" style="height: 61px;">
-          <ion-grid>
-            <ion-row (click)="tapPay()">
-              <ion-col col-4>
-                <img src="assets/Myimg/Mastercard Logo.svg" alt="Logo">
-              </ion-col>
-    
-              <ion-col col-4>
-                <p class="Pname">Mastercard</p>
-              </ion-col>
-    
-              <ion-col col-4>
-                <ion-icon name="custom-go"></ion-icon>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </ion-item>
-      </ion-list> -->
-
-
-
-
-
-  <!-- <ion-grid style="margin-top:30px">
-            <ion-row>
-              <ion-col col-12>
-                <div>
-                <button ion-button icon-end color="dream" round class="sign">
-                    Visa / Master
-                    <ion-icon name="ios-send-outline"></ion-icon>
-                  </button>
-              </div>
-              </ion-col>
-              <ion-col col-12>
-                  <div>
-                      <button ion-button icon-end color="danger" round class="sign">
-                          Paypal
-                          <ion-icon name="ios-undo-outline"></ion-icon>
-                        </button>
-                    </div>
-              </ion-col>
-            </ion-row>
-          </ion-grid> -->
-
+   
 <!-- ===============================Arabic======================== -->
 
 <ng-template #Arabic>
@@ -216,8 +194,8 @@
     
             <div>
                 <audio controls *ngIf="dream.voice_url!=null">
-                  <source src="http://dreamsapp.net/storage/{{dream.voice_url}}" type="audio/mp3">
-                    <!-- <source src="http://10.117.18.35:8000/storage/{{dream.voice_url}}" type="audio/mp3"> -->
+                  <!-- <source src="https://212.237.28.169/storage/{{dream.voice_url}}" type="audio/mp3"> -->
+                    <source src="http://10.117.18.35:8000/storage/{{dream.voice_url}}" type="audio/mp3">
                     Your browser does not support the audio element.
                 </audio>
               </div>

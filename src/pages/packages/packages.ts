@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController,Platform  } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController,Platform  } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { AddPage } from '../../pages/add/add';
 import { TranslateService } from '@ngx-translate/core';
 import { RegisterationPage } from '../../pages/registeration/registeration';
 import { InAppPurchase } from '@ionic-native/in-app-purchase';
+import { ApplePay } from '@ionic-native/apple-pay';
 /**
  * Generated class for the PackagesPage page.
  *
@@ -12,9 +13,8 @@ import { InAppPurchase } from '@ionic-native/in-app-purchase';
  * Ionic pages and navigation.
  */
 
-//const Dreams ='com.bos.dreamsinterpreter.Dream';
+//const Dreams ='com.bos.dreamsinterpreter2.1';
 
-@IonicPage()
 @Component({
   selector: 'page-packages',
   templateUrl: 'packages.html',
@@ -24,13 +24,32 @@ export class PackagesPage {
   loading: any;
   public responseData : any;
   public visit : any;
-  products : any;
+  products : [];
   purchased = 0;
+  public lang:any;
+
+  items:any =[{label: 'Package 1',amount:4.99}];
+  shippingMethods: any = [
+    {
+      identifier: 'NextDay',
+      label: 'NextDay',
+      detail: 'Arrives tomorrow by 5pm.',
+      amount: 3.99
+    }];
+  merchantIdentifier: string = 'merchant.com.bos.dreamsinterpreter2merchant';
+  merchantCapabilities: any = ['3ds', 'debit', 'credit'];
+  currencyCode: string = 'US';
+  countryCode: string = 'US';
+  supportedNetworks: any= ['visa', 'masterCard'];
+  billingAddressRequirement: any = ['name', 'email', 'phone'];
+  shippingAddressRequirement: any = 'none';
+  shippingType: string = "shipping";
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public authService:AuthServiceProvider,
    public loadingCtrl: LoadingController, private toastCtrl: ToastController,
-   public translate: TranslateService,private iap: InAppPurchase, public platform: Platform) {
+   public translate: TranslateService,private iap: InAppPurchase, public platform: Platform,private applePa: ApplePay) {
 
     const data = JSON.parse(localStorage.getItem("visit"));
     this.visit = data;
@@ -41,31 +60,87 @@ export class PackagesPage {
    //this.getProducts();
 
   }
+  async applePay(){
+     await this.applePa.canMakePayments().then((message) => {
+      console.log(message);
+      // Apple Pay is enabled. Expect:
+      // 'This device can make payments.'
+      this.presentToast("success","This device can make payments.");
 
-  getProducts(){
-  //  this.platform.ready().then(()=>{
-  //     this.iap.getProducts([DreamsKey]).then((products) => {
-  //     console.log(products);
-  //     this.products=products;
-  //   })
-  // })
-  
-  //   .catch(err => {
-  //     console.log(err);
-  //   });
+    }).catch((error) => {
+      console.log(error);
+      this.presentToast("error",error);
 
-  this.iap
- .getProducts(['Dream'])
- .then((products) => {
-   console.log(products);
- })
- .catch((err) => {
-   console.log(err);
- });
+      // There is an issue, examine the message to see the details, will be:
+      // 'This device cannot make payments.''
+      // 'This device can make payments but has no supported cards'
+    });
   }
 
-  
+  async payWithApplePay() {
+    // try {
+    //   const applePayTransaction = await this.applePa.makePaymentRequest({
+    //     items : this.items,
+    //     merchantIdentifier: this.merchantIdentifier,
+    //     currencyCode: this.currencyCode,
+    //     countryCode: this.countryCode,
+    //     billingAddressRequirement: this.billingAddressRequirement
+    //   });
 
+    //   const transactionStatus = await completeTransactionWithMerchant(applePayTransaction);
+    //   await this.applePa.completeLastTransaction(transactionStatus);
+    // } catch {
+    //   // handle payment request error
+    //   // Can also handle stop complete transaction but these should normally not occur
+    // }
+
+    // // only if you started listening before
+    // await this.applePa.stopListeningForShippingContactSelection();
+
+
+    try {
+      let order: any = {
+        items: this.items,
+        shippingMethods: this.shippingMethods,
+        merchantIdentifier: this.merchantIdentifier,
+        currencyCode: this.currencyCode,
+        countryCode: this.countryCode,
+        billingAddressRequirement: this.billingAddressRequirement,
+        shippingAddressRequirement: this.shippingAddressRequirement,
+        shippingType: this.shippingType,
+        merchantCapabilities: this.merchantCapabilities,
+        supportedNetworks: this.supportedNetworks
+      }
+      this.applePa.makePaymentRequest(order).then(message => {
+        console.log(message);
+        this.applePa.completeLastTransaction('success');
+      }).catch((error) => {
+        console.log(error);
+        this.presentToast("error",error);
+        this.applePa.completeLastTransaction('failure');
+      });
+
+    } catch{
+      // handle payment request error
+      // Can also handle stop complete transaction but these should normally not occur
+    }
+
+
+ }
+
+  // getProducts(){
+  //     this.iap
+  //     .getProducts(['com.bos.dreamsinterpreter2.prod2'])
+  //     .then((products) => {
+  //     //JSON.stringify(products);
+  //     console.log(products);
+  //     //this.products=products;
+  //   })
+  //   .catch((err) => {
+  //     console.log(JSON.stringify(err));
+  //     this.presentToast("error",err);
+  //   });
+  // }
 
   // buy(){
   //   this.iap.buy().then((data)=> {
@@ -89,15 +164,30 @@ export class PackagesPage {
       this.loading.dismiss();
       }, (err) => { 
       console.log(err); 
-      this.loading.dismiss();
+      if(err){
+        if(this.lang=='en')
+        {
+          this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+        }
+        else if(this.lang=='ar')
+          {
+            this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+          }
+        this.loading.dismiss();
+      }
+      
       // this.presentToast("Http Request Error...");
       // this.presentToast("error",err.message);  
-      if(err.status=401)
+      else if(err.status=401)
     {
-      this.presentToast("error",err.error.error);
-    }
-    else{
-      this.presentToast("error",err.message);
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
     }
     }); 
    }
@@ -123,10 +213,14 @@ export class PackagesPage {
     // this.presentToast("error",err.message);
     if(err.status=401)
     {
-      this.presentToast("error",err.error.error);
-    }
-    else{
-      this.presentToast("error",err.message);
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
     }
   }); 
       }

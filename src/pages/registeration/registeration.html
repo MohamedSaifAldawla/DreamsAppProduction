@@ -41,9 +41,10 @@
   </div>
 
 <ion-item class="check">
-  <ion-label>{{'terms' | translate}}</ion-label>
+  <ion-label >{{'terms' | translate}}</ion-label>
   <ion-checkbox color="dream" checked="true"></ion-checkbox>
 </ion-item>
+<p class="p1" href="#" onclick="window.open('https://dreamsapp.net/termsandservice')">{{'Terms' | translate}}</p>
 
 <button ion-button round color="dream" class="sign" (click)="singup2()">{{'signup' | translate}}</button>
 
@@ -51,8 +52,10 @@
 
 <p class="p1">{{'social' | translate}}</p>
 <ion-col col-6>
-  <img tappable src="assets/Myimg/Facebook.svg" style="width:30px;margin-top:20px;cursor:pointer;margin-right: 0px;" (click)="loginFb()">
-  <img tappable src="assets/Myimg/Twitter.svg" style="width:30px;margin-top:20px;cursor:pointer;margin-right: 32px;" (click)="twLogin()">
+  <img tappable src="assets/Myimg/Facebook.svg" style="width:30px;margin-top:20px;cursor:pointer;margin-right: -20px;" (click)="loginFb()">
+  <img tappable src="assets/Myimg/Twitter.svg" style="width:30px;margin-top:20px;cursor:pointer;margin-right: 0px;" (click)="twLogin()">
+  <img tappable src="assets/Myimg/apple.png" style="width:30px;margin-top:20px;cursor:pointer;margin-right: 10px;margin-left: 10px;" (click)="signinwithapple()" class='apple'>
+
 </ion-col>
 
 </ion-content>

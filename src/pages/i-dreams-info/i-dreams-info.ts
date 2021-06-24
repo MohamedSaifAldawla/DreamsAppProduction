@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController, Platform   } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController, Platform   } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { Media, MediaObject } from '@ionic-native/media';
 import { File } from '@ionic-native/file';
@@ -14,7 +14,6 @@ import { TranslateService } from '@ngx-translate/core';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-i-dreams-info',
   templateUrl: 'i-dreams-info.html',
@@ -75,10 +74,14 @@ export class IDreamsInfoPage {
       // this.presentToast("error",err.message);
       if(err.status=401)
     {
-      this.presentToast("error",err.error.error);
-    }
-    else{
-      this.presentToast("error",err.message);
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
     }
       }); 
     }
@@ -115,10 +118,14 @@ export class IDreamsInfoPage {
     // this.presentToast("error",err.message);
     if(err.status=401)
     {
-      this.presentToast("error",err.error.error);
-    }
-    else{
-      this.presentToast("error",err.message);
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
     }
     }); 
     
@@ -176,10 +183,14 @@ export class IDreamsInfoPage {
       // this.presentToast("error",err.message);
       if(err.status=401)
     {
-      this.presentToast("error",err.error.error);
-    }
-    else{
-      this.presentToast("error",err.message);
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
     }
     });
   }

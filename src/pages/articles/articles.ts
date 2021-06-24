@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController    } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController    } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { TranslateService } from '@ngx-translate/core';
 
@@ -10,7 +10,6 @@ import { TranslateService } from '@ngx-translate/core';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-articles',
   templateUrl: 'articles.html',
@@ -22,6 +21,7 @@ export class ArticlesPage {
   public responseData : any;
   //public dataset : any;
   public userDetails : any;
+  public lang:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams,
     public authService:AuthServiceProvider,
@@ -46,12 +46,16 @@ export class ArticlesPage {
       this.loading.dismiss();
       //this.presentToast("Http Request Error...");
       if(err.status=401)
+    {
+      if(this.lang=='en')
       {
-        this.presentToast("error",err.error.error);
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
       }
-      else{
-        this.presentToast("error",err.message);
-      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
+    }
       }); 
    }
 

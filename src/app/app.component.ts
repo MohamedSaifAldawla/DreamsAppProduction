@@ -26,6 +26,7 @@ import { TranslateService } from '@ngx-translate/core';
 export class MyApp {
 
   rootPage:any=LangPage;  
+  //rootPage:any=PaymentPage;  
  
   constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen,
     public translate: TranslateService ) {

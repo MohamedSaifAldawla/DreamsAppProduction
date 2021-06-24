@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController, Platform   } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController, Platform   } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 //import { MediaPlugin } from '@ionic-native/media';
 import { StatusBar } from '@ionic-native/status-bar';
@@ -15,7 +15,7 @@ import { AlertController } from 'ionic-angular';
 
 //const MEDIA_FILES_KEY = 'mediaFiles';
 
-@IonicPage()
+
 @Component({
   selector: 'page-add',
   templateUrl: 'add.html',
@@ -23,9 +23,10 @@ import { AlertController } from 'ionic-angular';
 export class AddPage {
 
   recording: boolean = false;
-  filePath: any;
-  fileName: any;
+  filePath: any ={};
+  fileName: any ={};
   audio: MediaObject;
+  //audio: MediaObject= this.media.create('path/to/file.mp3');
   audioList: any[] = [];
   mediaTimer: any;
   public setAudioPosition: any;
@@ -127,12 +128,16 @@ export class AddPage {
       // this.presentToast("err");
      // this.presentToast("error",err.message);
      if(err.status=401)
-     {
-       this.presentToast("error",JSON.stringify(err.error.errors));
-     }
-     else{
-       this.presentToast("error",err.message);
-     }
+    {
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
+    }
       }); 
     }
     else if(this.dreamData.dtype=='0')
@@ -175,7 +180,8 @@ export class AddPage {
       
     }
     //console.log(this.dreamData);
-     fileTransfer.upload(this.filePath, 'https://dreamsapp.net/api/dreams', options)
+     fileTransfer.upload(this.filePath, this.authService.apiUrl+'api/dreams', options)
+    //  fileTransfer.upload(this.filePath, 'https://dreamsapp.net/api/dreams', options)
       .then((result) => {
       // console.log(data+" Created Successfully ");
       this.responseData=result;
@@ -212,7 +218,7 @@ export class AddPage {
     }
   }
 
-  startRecord() {
+  start() {
     this.audioList=[];
     if (this.platform.is('ios')) {
      this.fileName = 'record'+new Date().getDate()+new Date().getMonth()+new Date().getFullYear()+new Date().getHours()+new Date().getMinutes()+new Date().getSeconds()+'.m4a';
@@ -224,8 +230,13 @@ export class AddPage {
       this.filePath = this.file.externalDataDirectory.replace(/file:\/\//g, '') + this.fileName;
       this.audio = this.media.create(this.filePath);
     }
+
+    // else if (this.platform.is('browser')) {
+    //   this.media.create('path/to/file.mp3');
+    //  }
     this.audio.startRecord();
     this.recording = true;
+   
 
    this.myVar=setTimeout(()=>{
     this.StopRecord();

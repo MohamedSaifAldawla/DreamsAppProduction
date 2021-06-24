@@ -24,6 +24,7 @@ export class HomePage {
   public userDreams : any;
   public Articles : any;
   public visit : any;
+  public lang:any;
 
 
   constructor(public app:App,public navCtrl: NavController, public authService:AuthServiceProvider,
@@ -50,12 +51,16 @@ export class HomePage {
     this.userDreams=this.responseData;
   }, (err) => { 
     console.log(err); 
-   if(err.status=401)
+    if(err.status=401)
     {
-      this.presentToast("error",err.error.message);
-    }
-    else{
-      this.presentToast("error",err.message);
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
     }
     }); 
 
@@ -68,10 +73,14 @@ export class HomePage {
       console.log(err); 
       if(err.status=401)
       {
-        this.presentToast("error",err.error.error);
-      }
-      else{
-        this.presentToast("error",err.message);
+        if(this.lang=='en')
+        {
+          this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+        }
+        else if(this.lang=='ar')
+          {
+            this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+          }
       }
      
     }); 
@@ -137,10 +146,14 @@ help(){ this.navCtrl.push(HelpPage); }
     console.log(err); 
     if(err.status=401)
     {
-      this.presentToast("error",err.error.error);
-    }
-    else{
-      this.presentToast("error",err.message);
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
     }
   }); 
  }

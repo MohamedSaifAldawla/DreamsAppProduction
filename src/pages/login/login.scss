@@ -11,6 +11,24 @@ ion-content{
 //   overflow-y: hidden !important;
 // }
 
+.label-ios ,.label-md{
+  /* margin: 11px 8px 11px 0; */
+  text-align: right;
+  /* border: none; */
+}
+
+.item-ios.item-block .item-inner,
+.item-md.item-block .item-inner {
+  padding-right: 55px;
+  border-bottom: none;
+}
+
+.toggle-ios.toggle-checked .toggle-icon,
+.toggle-md.toggle-checked .toggle-icon {
+  
+  background-color: #20BED7;
+}
+
 img{
     width: 118px;
     // margin-top: 10px;
@@ -150,7 +168,6 @@ font-size: 20px;
    margin-right: -100px;
       margin-left: 80px;
 }
-
 
 
 }

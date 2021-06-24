@@ -13,7 +13,8 @@ export class AuthServiceProvider {
   
   public tname : any;
   constructor(public http: HttpClient ) {  }
-//  apiUrl = 'http://10.117.18.35:8000/';
+  //apiUrl = 'https://bos-sd.com/';
+  //apiUrl = 'https://212.237.28.169/';
    apiUrl = 'https://dreamsapp.net/';
 
 //====================================Register=====================================//

@@ -8,9 +8,8 @@ import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { HttpModule, Http } from '@angular/http';
 import { Facebook } from '@ionic-native/facebook';
-import { TwitterConnect } from '@ionic-native/twitter-connect';
 import { TranslateService } from '@ngx-translate/core';
-
+import { SignInWithApple, AppleSignInResponse, AppleSignInErrorResponse, ASAuthorizationAppleIDRequest } from '@ionic-native/sign-in-with-apple/ngx';
 import { AboutPage } from '../pages/about/about';
 import { ContactPage } from '../pages/contact/contact';
 import { HomePage } from '../pages/home/home';
@@ -48,6 +47,8 @@ import { InAppBrowser } from '@ionic-native/in-app-browser/ngx';
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { InAppPurchase } from '@ionic-native/in-app-purchase';
+import { TouchID } from '@ionic-native/touch-id';
+import { ApplePay } from '@ionic-native/apple-pay';
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -149,7 +150,6 @@ export function createTranslateLoader(http: HttpClient) {
   providers: [
     StatusBar,
     SplashScreen,
-    TwitterConnect,
     InAppBrowser,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     AuthServiceProvider,
@@ -160,7 +160,10 @@ export function createTranslateLoader(http: HttpClient) {
     File,
     Facebook,
     TranslateService,
-    InAppPurchase
+    InAppPurchase,
+    SignInWithApple,
+    TouchID,
+    ApplePay
   ]
   
 })

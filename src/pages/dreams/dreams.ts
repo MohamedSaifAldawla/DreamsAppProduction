@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, LoadingController, ToastController   } from 'ionic-angular';
+import { NavController, NavParams, LoadingController, ToastController   } from 'ionic-angular';
 import { AuthServiceProvider } from '../../providers/auth-service/auth-service';
 import { DreamInfoPage } from '../../pages/dream-info/dream-info';
 import { TranslateService } from '@ngx-translate/core';
@@ -11,7 +11,6 @@ import { TranslateService } from '@ngx-translate/core';
  * Ionic pages and navigation.
  */
 
-@IonicPage()
 @Component({
   selector: 'page-dreams',
   templateUrl: 'dreams.html',
@@ -52,12 +51,16 @@ export class DreamsPage {
       // this.presentToast("Your Token is Expired...");
       //this.presentToast("error",err.message);
       if(err.status=401)
-    {
-      this.presentToast("error",err.error.error);
-    }
-    else{
-      this.presentToast("error",err.message);
-    }
+      {
+        if(this.lang=='en')
+        {
+          this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+        }
+        else if(this.lang=='ar')
+          {
+            this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+          }
+      }
       }); 
    }
 
@@ -77,12 +80,16 @@ export class DreamsPage {
       // this.presentToast("Your Token is Expired...");
       // this.presentToast("error",err.message);
       if(err.status=401)
-    {
-      this.presentToast("error",err.error.error);
-    }
-    else{
-      this.presentToast("error",err.message);
-    }
+      {
+        if(this.lang=='en')
+        {
+          this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+        }
+        else if(this.lang=='ar')
+          {
+            this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+          }
+      }
       }); 
    }
 
@@ -103,10 +110,14 @@ export class DreamsPage {
       // this.presentToast("error",err.message);
       if(err.status=401)
     {
-      this.presentToast("error",err.error.error);
-    }
-    else{
-      this.presentToast("error",err.message);
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
     }
       }); 
    }
@@ -128,12 +139,16 @@ export class DreamsPage {
         // this.presentToast("Your Token is Expired...");
         // this.presentToast("error",err.message);
         if(err.status=401)
+    {
+      if(this.lang=='en')
       {
-        this.presentToast("error",err.error.error);
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
       }
-      else{
-        this.presentToast("error",err.message);
-      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
+    }
         }); 
      }
 
@@ -156,10 +171,14 @@ export class DreamsPage {
       // this.presentToast("error",err.message);
       if(err.status=401)
     {
-      this.presentToast("error",err.error.error);
-    }
-    else{
-      this.presentToast("error",err.message);
+      if(this.lang=='en')
+      {
+        this.presentToast("error","Your Token is Expired, Login Again or check your connection ...!");
+      }
+      else if(this.lang=='ar')
+        {
+          this.presentToast("error","انتهت مده صلاحيه الجلسه ,الرجاء الدخول مجددا او تفقد اتصال الشبكه"); 
+        }
     }
       }); 
     
